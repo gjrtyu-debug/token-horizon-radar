@@ -94,34 +94,37 @@ function comparableGroups(protocols: Protocol[]) {
   return { benchmark, categories, live };
 }
 
+const categoryReviews: [RegExp, string][] = [
+  [/lend|borrow|collateral|cdp/, 'Check permitted collateral, borrowing rates and the liquidation threshold.'],
+  [/dex|exchange|swap/, 'Get a swap quote and compare pool liquidity, fees and slippage.'],
+  [/bridge|cross.chain/, 'Check the supported route, destination address format and settlement delay.'],
+  [/staking|restak/, 'Read the staking terms, unbonding window and slashing policy.'],
+  [/perp|derivative|options/, 'Inspect the order book and margin rules without opening a leveraged position.'],
+  [/yield|vault|aggregator|farm/, 'Review strategy exposure, management fees and whether withdrawals can be paused.'],
+  [/prediction/, 'Review the market rules and local eligibility before opening any position.'],
+  [/payment|card/, 'Look for a demo or sandbox and compare its terms with the live service.'],
+];
+
 function researchPlan(protocol: Protocol, confidence: number, age: number | null): string[] {
   const chain = protocol.chains?.[0] ?? 'its supported network';
   const category = protocolCategory(protocol).toLowerCase();
-  const routes: [RegExp, string][] = [
-    [/lend|borrow|collateral|cdp/, 'Check permitted collateral, borrowing rates and the liquidation threshold.'],
-    [/dex|exchange|swap/, 'Get a swap quote and compare pool liquidity, fees and slippage.'],
-    [/bridge|cross.chain/, 'Check the supported route, destination address format and settlement delay.'],
-    [/staking|restak/, 'Read the staking terms, unbonding window and slashing policy.'],
-    [/perp|derivative|options/, 'Inspect the order book and margin rules without opening a leveraged position.'],
-    [/yield|vault|aggregator|farm/, 'Review strategy exposure, management fees and whether withdrawals can be paused.'],
-    [/prediction/, 'Review the market rules and local eligibility before opening any position.'],
-    [/payment|card/, 'Look for a demo or sandbox and compare its terms with the live service.'],
-  ];
-  const review = routes.find(([pattern]) => pattern.test(category))?.[1] ??
+  const review = categoryReviews.find(([pattern]) => pattern.test(category))?.[1] ??
     'Find a documented no-deposit workflow and review what information the application requests.';
   const tvlForBudget = Math.max(0, finite(protocol.tvl_usd));
   const testBudget = bound(Math.round(Math.sqrt(tvlForBudget) / 100), 10, 100);
-  const spendLimit = confidence < 0.4 ? 0 : testBudget;
+  const budget = confidence < 0.4
+    ? 'Keep this protocol at a zero-dollar research budget.'
+    : 'If testing after research, use a planning limit of $' + testBudget + '.';
   const cadence = age !== null && age < 90 ? 'after one week' : 'within a month';
 
   return [
-    `VERIFY · Confirm the canonical ${protocol.name} application and its documented deployment on ${chain}. Cost $0; 5–10 min.`,
+    'VERIFY · Confirm the canonical ' + protocol.name + ' application and its documented deployment on ' + chain + '. Cost $0; 5–10 min.',
     'ELIGIBILITY · Check the terms, supported jurisdictions and any published rewards criteria. Cost $0; 10 min.',
     'ISOLATE · Review permissions in a separate wallet profile and verify every contract against official documentation. Cost $0; 10 min.',
-    `EVALUATE · ${review} This review needs no funds. If testing later, the planning limit is $${spendLimit}; 15–30 min.`,
-    `ESTIMATE FEES · Preview costs for both entry and exit on ${chain} before deciding. Cost $0 for quotes; 5 min.`,
+    'EVALUATE · ' + review + ' ' + budget + ' Allow 15–30 min.',
+    'ESTIMATE FEES · Preview costs for both entry and exit on ' + chain + ' before deciding. Cost $0 for quotes; 5 min.',
     'TRACK · Save official announcement links and your own activity records. Recheck eligibility weekly. Cost $0; 5 min per week.',
-    `EXIT · Review risk and withdrawal terms ${cadence}. If already participating, check the network fee before withdrawing.`,
+    'EXIT · Review risk and withdrawal terms ' + cadence + '. If already participating, check the network fee before withdrawing.',
     'CLAIM · Follow only a claim address published in verified official channels. Rewards and costs remain unknown until announced.',
   ];
 }
