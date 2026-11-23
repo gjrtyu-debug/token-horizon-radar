@@ -1,0 +1,38 @@
+.page-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-controls button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.protocol-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.protocol-link:focus-visible,
+.page-controls button:focus-visible {
+  outline: 2px solid #71e1be;
+  outline-offset: 3px;
+}
+
+.scenario-bar {
+  height: 14px;
+  margin: 7px 0;
+  border-radius: 4px;
+}
+
+.scenario-explanation {
+  color: #8da3bd;
+  font-size: 11px;
+  line-height: 1.75;
+}

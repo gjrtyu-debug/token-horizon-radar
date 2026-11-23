@@ -49,10 +49,14 @@
   }
 
   const table = get('rows');
-  const navigation = element('div', '');
+  const navigation = element('div', 'page-controls');
   const previous = element('button', 'export', '‹ Previous');
   const next = element('button', 'export', 'Next ›');
+  navigation.setAttribute('role', 'group');
+  navigation.setAttribute('aria-label', 'Board pages');
   previous.type = next.type = 'button';
+  previous.setAttribute('aria-label', 'Previous protocol page');
+  next.setAttribute('aria-label', 'Next protocol page');
   navigation.append(previous, next);
   get('shown').after(navigation);
   get('shown').setAttribute('aria-live', 'polite');
@@ -63,7 +67,9 @@
       if (state.category && protocol.category !== state.category) return false;
       if (state.chain && !protocol.chains.includes(state.chain)) return false;
       const searchable = [protocol.name, protocol.slug, protocol.category, ...protocol.chains];
-      return searchable.some(value => value.toLowerCase().includes(state.query));
+      const words = state.query.split(/\s+/);
+      const searchText = searchable.join(' ').toLowerCase();
+      return words.every(word => searchText.includes(word));
     }).sort((left, right) => {
       const value = figures[state.order];
       return value(right) - value(left) || left.rank - right.rank;
@@ -77,9 +83,9 @@
     const identity = element('div', 'proto');
     const rank = element('span', 'rank', String(protocol.rank).padStart(2, '0'));
     const avatar = element('span', 'avatar', protocol.name.slice(0, 2).toUpperCase());
-    const name = element('button', 'pname', protocol.name);
+    const name = element('button', 'pname protocol-link', protocol.name);
     name.type = 'button';
-    name.style.cssText = 'background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer';
+    name.setAttribute('aria-label', 'Open details for ' + protocol.name);
     const names = element('div', '');
     names.append(name, element('div', 'slug', protocol.slug));
     identity.append(rank, avatar, names);
@@ -142,8 +148,7 @@
     chart.setAttribute('role', 'img');
     const bands = [protocol.value_low_usd, protocol.implied_value_usd, protocol.value_high_usd];
     for (const [index, amount] of bands.entries()) {
-      const bar = element('div', '');
-      bar.style.cssText = 'height:14px;margin:7px 0;border-radius:4px';
+      const bar = element('div', 'scenario-bar');
       bar.style.width = Math.max(7, 100 * amount / bands[2]) + '%';
       bar.style.backgroundColor = ['#476f78', '#71e1be', '#6688bd'][index];
       chart.append(bar);
@@ -165,10 +170,9 @@
       metric('PEER MULTIPLE', multiple(protocol.model.category_multiple)),
       metric('MODEL CONFIDENCE', percent(protocol.confidence)),
     );
-    const details = element('p', '', 'The scenario uses TVL, an adjusted peer multiple, seven-day momentum and maturity. ' +
+    const details = element('p', 'scenario-explanation', 'The scenario uses TVL, an adjusted peer multiple, seven-day momentum and maturity. ' +
       'Peer sample: ' + protocol.model.peer_count + '; momentum ' + multiple(protocol.model.growth_factor) +
       '; maturity ' + multiple(protocol.model.age_factor) + '. Confidence reflects available evidence.');
-    details.style.cssText = 'color:#8da3bd;font-size:11px;line-height:1.75';
     const plan = element('ol', 'steps');
     for (const [index, step] of protocol.farm_steps.entries()) {
       const item = element('li', '');
@@ -191,12 +195,12 @@
     if (location.hash !== '#' + encodeURIComponent(slug)) location.hash = encodeURIComponent(slug);
   }
 
-  function hide() {
+  function hide(updateAddress = true) {
     const detail = get('detail');
     if (!detail.classList.contains('open')) return;
     detail.classList.remove('open');
     detail.setAttribute('aria-hidden', 'true');
-    history.replaceState(null, '', location.pathname + location.search);
+    if (updateAddress) history.replaceState(null, '', location.pathname + location.search);
     opener?.focus();
     opener = null;
   }
@@ -215,9 +219,14 @@
   }
   for (const [id, scope] of Object.entries(scopeNames)) {
     const button = get('nav-' + id);
+    button.setAttribute('aria-pressed', String(scope === state.scope));
     button.addEventListener('click', () => {
       state.scope = scope;
-      for (const item of document.querySelectorAll('.nav')) item.classList.toggle('active', item === button);
+      for (const item of document.querySelectorAll('.nav')) {
+        const active = item === button;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-pressed', String(active));
+      }
       resetPage();
     });
   }
@@ -227,7 +236,7 @@
     const row = event.target.closest('tr[data-slug]');
     if (row) show(row.dataset.slug, row.querySelector('button'));
   });
-  get('close').addEventListener('click', hide);
+  get('close').addEventListener('click', () => hide());
   document.addEventListener('keydown', event => { if (event.key === 'Escape') hide(); });
 
   get('export').addEventListener('click', () => {
@@ -248,10 +257,13 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 
-  render();
-  if (location.hash) {
+  function restoreDetail() {
     let slug;
     try { slug = decodeURIComponent(location.hash.slice(1)); } catch { slug = ''; }
-    if (slug) show(slug);
+    if (bySlug.has(slug)) show(slug);
+    else hide(false);
   }
+  render();
+  window.addEventListener('hashchange', restoreDetail);
+  restoreDetail();
 })();
