@@ -1,0 +1,3689 @@
+{
+  "as_of": "2026-11-23",
+  "source": "synthetic demo",
+  "floor_usd": 25000000,
+  "protocols": [
+    {
+      "slug": "synthetic-protocol-1",
+      "name": "Atlas Finance 1",
+      "category": "Lending",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 98774030,
+      "change_7d": 22.06,
+      "mcap_usd": null,
+      "listed_at": "2024-03-24",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-2",
+      "name": "Velora Layer 2",
+      "category": "Dexes",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 58013733,
+      "change_7d": 37.99,
+      "mcap_usd": null,
+      "listed_at": "2024-07-09",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-3",
+      "name": "Cobalt Labs 3",
+      "category": "Yield",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 330649999,
+      "change_7d": -1.79,
+      "mcap_usd": null,
+      "listed_at": "2020-05-12",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-4",
+      "name": "Kite Engine 4",
+      "category": "Restaking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 19.63,
+      "mcap_usd": null,
+      "listed_at": "2023-06-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-5",
+      "name": "Lumen Network 5",
+      "category": "Bridge",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 30787975,
+      "change_7d": 22.2,
+      "mcap_usd": null,
+      "listed_at": "2020-08-07",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-6",
+      "name": "Astra One 6",
+      "category": "Derivatives",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -8.18,
+      "mcap_usd": null,
+      "listed_at": "2020-01-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-7",
+      "name": "Arbor Markets 7",
+      "category": "Infrastructure",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 34.13,
+      "mcap_usd": null,
+      "listed_at": "2025-10-18",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-8",
+      "name": "Mirage Exchange 8",
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -2.16,
+      "mcap_usd": null,
+      "listed_at": "2021-04-05",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-9",
+      "name": "Helios Flow 9",
+      "category": "Lending",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 73435732,
+      "change_7d": 36.83,
+      "mcap_usd": null,
+      "listed_at": "2022-06-03",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-10",
+      "name": "Fluent Vault 10",
+      "category": "Dexes",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 703196800,
+      "change_7d": 40.8,
+      "mcap_usd": null,
+      "listed_at": "2025-10-21",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-11",
+      "name": "Zephyr Core 11",
+      "category": "Yield",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -17.5,
+      "mcap_usd": null,
+      "listed_at": "2025-04-12",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-12",
+      "name": "Nexus Protocol 12",
+      "category": "Restaking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -24.55,
+      "mcap_usd": null,
+      "listed_at": "2026-01-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-13",
+      "name": "Arcadia Finance 13",
+      "category": "Bridge",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 54869377,
+      "change_7d": -21.64,
+      "mcap_usd": null,
+      "listed_at": "2025-05-07",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-14",
+      "name": "Vesper Layer 14",
+      "category": "Derivatives",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 419839214,
+      "change_7d": 20.47,
+      "mcap_usd": null,
+      "listed_at": "2022-03-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-15",
+      "name": "Kinetic Labs 15",
+      "category": "Infrastructure",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 501632727,
+      "change_7d": 37.51,
+      "mcap_usd": null,
+      "listed_at": "2026-04-03",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-16",
+      "name": "Orbit Engine 16",
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 85278178,
+      "change_7d": 11.03,
+      "mcap_usd": null,
+      "listed_at": "2026-05-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-17",
+      "name": "Rift Network 17",
+      "category": "Lending",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 40.9,
+      "mcap_usd": null,
+      "listed_at": "2020-06-09",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-18",
+      "name": "Axiom One 18",
+      "category": "Dexes",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 19.06,
+      "mcap_usd": null,
+      "listed_at": "2020-01-15",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-19",
+      "name": "Tessera Markets 19",
+      "category": "Yield",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -15.0,
+      "mcap_usd": null,
+      "listed_at": "2023-02-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-20",
+      "name": "Caldera Exchange 20",
+      "category": "Restaking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 13.92,
+      "mcap_usd": null,
+      "listed_at": "2022-05-09",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-21",
+      "name": "Atlas Flow 21",
+      "category": "Bridge",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -3.19,
+      "mcap_usd": null,
+      "listed_at": "2021-04-15",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-22",
+      "name": "Velora Vault 22",
+      "category": "Derivatives",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 404562234,
+      "change_7d": 5.19,
+      "mcap_usd": null,
+      "listed_at": "2022-10-04",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-23",
+      "name": "Cobalt Core 23",
+      "category": "Infrastructure",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -6.98,
+      "mcap_usd": null,
+      "listed_at": "2022-02-15",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-24",
+      "name": "Kite Protocol 24",
+      "category": "Liquid Staking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 887899295,
+      "change_7d": -9.2,
+      "mcap_usd": null,
+      "listed_at": "2021-09-22",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-25",
+      "name": "Lumen Finance 25",
+      "category": "Lending",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -13.3,
+      "mcap_usd": null,
+      "listed_at": "2022-05-04",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-26",
+      "name": "Astra Layer 26",
+      "category": "Dexes",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 425061940,
+      "change_7d": 4.17,
+      "mcap_usd": null,
+      "listed_at": "2026-02-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-27",
+      "name": "Arbor Labs 27",
+      "category": "Yield",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 115852810,
+      "change_7d": 21.2,
+      "mcap_usd": null,
+      "listed_at": "2024-11-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-28",
+      "name": "Mirage Engine 28",
+      "category": "Restaking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 146467970,
+      "change_7d": 27.38,
+      "mcap_usd": null,
+      "listed_at": "2024-09-12",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-29",
+      "name": "Helios Network 29",
+      "category": "Bridge",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 33.9,
+      "mcap_usd": null,
+      "listed_at": "2020-10-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-30",
+      "name": "Fluent One 30",
+      "category": "Derivatives",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -14.03,
+      "mcap_usd": null,
+      "listed_at": "2023-03-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-31",
+      "name": "Zephyr Markets 31",
+      "category": "Infrastructure",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -18.32,
+      "mcap_usd": null,
+      "listed_at": "2026-04-04",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-32",
+      "name": "Nexus Exchange 32",
+      "category": "Liquid Staking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 1357100687,
+      "change_7d": -2.35,
+      "mcap_usd": null,
+      "listed_at": "2020-03-09",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-33",
+      "name": "Arcadia Flow 33",
+      "category": "Lending",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 126863872,
+      "change_7d": 0.09,
+      "mcap_usd": null,
+      "listed_at": "2026-11-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-34",
+      "name": "Vesper Vault 34",
+      "category": "Dexes",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 7.77,
+      "mcap_usd": null,
+      "listed_at": "2020-11-27",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-35",
+      "name": "Kinetic Core 35",
+      "category": "Yield",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 35.41,
+      "mcap_usd": null,
+      "listed_at": "2023-08-08",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-36",
+      "name": "Orbit Protocol 36",
+      "category": "Restaking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 123750174,
+      "change_7d": 17.18,
+      "mcap_usd": null,
+      "listed_at": "2023-04-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-37",
+      "name": "Rift Finance 37",
+      "category": "Bridge",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": -15.43,
+      "mcap_usd": null,
+      "listed_at": "2026-08-19",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-38",
+      "name": "Axiom Layer 38",
+      "category": "Derivatives",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 21.87,
+      "mcap_usd": null,
+      "listed_at": "2024-04-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-39",
+      "name": "Tessera Labs 39",
+      "category": "Infrastructure",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 481379263,
+      "change_7d": -19.82,
+      "mcap_usd": null,
+      "listed_at": "2024-10-28",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-40",
+      "name": "Caldera Engine 40",
+      "category": "Liquid Staking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 30000000,
+      "change_7d": 24.62,
+      "mcap_usd": null,
+      "listed_at": "2021-07-06",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-41",
+      "name": "Atlas Network 41",
+      "category": "Lending",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 6557867,
+      "change_7d": 5.58,
+      "mcap_usd": null,
+      "listed_at": "2024-09-12",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-42",
+      "name": "Velora One 42",
+      "category": "Dexes",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 29.87,
+      "mcap_usd": null,
+      "listed_at": "2024-04-21",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-43",
+      "name": "Cobalt Markets 43",
+      "category": "Yield",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 21310384,
+      "change_7d": 18.26,
+      "mcap_usd": null,
+      "listed_at": "2026-11-27",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-44",
+      "name": "Kite Exchange 44",
+      "category": "Restaking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 6097545,
+      "change_7d": -7.03,
+      "mcap_usd": null,
+      "listed_at": "2021-11-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-45",
+      "name": "Lumen Flow 45",
+      "category": "Bridge",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 23945096,
+      "change_7d": -2.8,
+      "mcap_usd": null,
+      "listed_at": "2025-06-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-46",
+      "name": "Astra Vault 46",
+      "category": "Derivatives",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -8.08,
+      "mcap_usd": null,
+      "listed_at": "2025-06-22",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-47",
+      "name": "Arbor Core 47",
+      "category": "Infrastructure",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -16.58,
+      "mcap_usd": null,
+      "listed_at": "2021-11-22",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-48",
+      "name": "Mirage Protocol 48",
+      "category": "Liquid Staking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 4734802,
+      "change_7d": 1.88,
+      "mcap_usd": null,
+      "listed_at": "2020-07-23",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-49",
+      "name": "Helios Finance 49",
+      "category": "Lending",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -16.45,
+      "mcap_usd": null,
+      "listed_at": "2022-06-06",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-50",
+      "name": "Fluent Layer 50",
+      "category": "Dexes",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 37.06,
+      "mcap_usd": null,
+      "listed_at": "2021-08-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-51",
+      "name": "Zephyr Labs 51",
+      "category": "Yield",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 21130855,
+      "change_7d": -0.11,
+      "mcap_usd": null,
+      "listed_at": "2020-09-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-52",
+      "name": "Nexus Engine 52",
+      "category": "Restaking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 6.17,
+      "mcap_usd": null,
+      "listed_at": "2020-04-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-53",
+      "name": "Arcadia Network 53",
+      "category": "Bridge",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -21.15,
+      "mcap_usd": null,
+      "listed_at": "2021-06-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-54",
+      "name": "Vesper One 54",
+      "category": "Derivatives",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 3154007,
+      "change_7d": -18.74,
+      "mcap_usd": null,
+      "listed_at": "2025-06-22",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-55",
+      "name": "Kinetic Markets 55",
+      "category": "Infrastructure",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 17352632,
+      "change_7d": -23.22,
+      "mcap_usd": null,
+      "listed_at": "2024-11-18",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-56",
+      "name": "Orbit Exchange 56",
+      "category": "Liquid Staking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 2918934,
+      "change_7d": -10.37,
+      "mcap_usd": null,
+      "listed_at": "2024-09-10",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-57",
+      "name": "Rift Flow 57",
+      "category": "Lending",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 2.62,
+      "mcap_usd": null,
+      "listed_at": "2023-06-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-58",
+      "name": "Axiom Vault 58",
+      "category": "Dexes",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 4520699,
+      "change_7d": 22.43,
+      "mcap_usd": null,
+      "listed_at": "2020-09-04",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-59",
+      "name": "Tessera Core 59",
+      "category": "Yield",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 23.57,
+      "mcap_usd": null,
+      "listed_at": "2021-08-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-60",
+      "name": "Caldera Protocol 60",
+      "category": "Restaking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 10.37,
+      "mcap_usd": null,
+      "listed_at": "2026-01-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-61",
+      "name": "Atlas Finance 61",
+      "category": "Bridge",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 4536732,
+      "change_7d": 24.2,
+      "mcap_usd": null,
+      "listed_at": "2022-05-05",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-62",
+      "name": "Velora Layer 62",
+      "category": "Derivatives",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 1.85,
+      "mcap_usd": null,
+      "listed_at": "2021-05-07",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-63",
+      "name": "Cobalt Labs 63",
+      "category": "Infrastructure",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 34.91,
+      "mcap_usd": null,
+      "listed_at": "2021-07-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-64",
+      "name": "Kite Engine 64",
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 21278112,
+      "change_7d": 33.51,
+      "mcap_usd": null,
+      "listed_at": "2022-10-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-65",
+      "name": "Lumen Network 65",
+      "category": "Lending",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -3.7,
+      "mcap_usd": null,
+      "listed_at": "2025-07-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-66",
+      "name": "Astra One 66",
+      "category": "Dexes",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -22.6,
+      "mcap_usd": null,
+      "listed_at": "2021-07-04",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-67",
+      "name": "Arbor Markets 67",
+      "category": "Yield",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 2181305,
+      "change_7d": 6.46,
+      "mcap_usd": null,
+      "listed_at": "2023-03-05",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-68",
+      "name": "Mirage Exchange 68",
+      "category": "Restaking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 22.7,
+      "mcap_usd": null,
+      "listed_at": "2024-04-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-69",
+      "name": "Helios Flow 69",
+      "category": "Bridge",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 9194665,
+      "change_7d": 3.23,
+      "mcap_usd": null,
+      "listed_at": "2024-02-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-70",
+      "name": "Fluent Vault 70",
+      "category": "Derivatives",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 2801487,
+      "change_7d": -18.47,
+      "mcap_usd": null,
+      "listed_at": "2021-02-05",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-71",
+      "name": "Zephyr Core 71",
+      "category": "Infrastructure",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 6.51,
+      "mcap_usd": null,
+      "listed_at": "2023-09-28",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-72",
+      "name": "Nexus Protocol 72",
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -9.35,
+      "mcap_usd": null,
+      "listed_at": "2021-07-23",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-73",
+      "name": "Arcadia Finance 73",
+      "category": "Lending",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 9990860,
+      "change_7d": 12.11,
+      "mcap_usd": null,
+      "listed_at": "2021-05-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-74",
+      "name": "Vesper Layer 74",
+      "category": "Dexes",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 2682934,
+      "change_7d": 25.71,
+      "mcap_usd": null,
+      "listed_at": "2025-03-28",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-75",
+      "name": "Kinetic Labs 75",
+      "category": "Yield",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -17.87,
+      "mcap_usd": null,
+      "listed_at": "2021-11-05",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-76",
+      "name": "Orbit Engine 76",
+      "category": "Restaking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 38.27,
+      "mcap_usd": null,
+      "listed_at": "2020-06-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-77",
+      "name": "Rift Network 77",
+      "category": "Bridge",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 0.6,
+      "mcap_usd": null,
+      "listed_at": "2021-05-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-78",
+      "name": "Axiom One 78",
+      "category": "Derivatives",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 10812959,
+      "change_7d": 30.42,
+      "mcap_usd": null,
+      "listed_at": "2025-10-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-79",
+      "name": "Tessera Markets 79",
+      "category": "Infrastructure",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 19.2,
+      "mcap_usd": null,
+      "listed_at": "2026-04-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-80",
+      "name": "Caldera Exchange 80",
+      "category": "Liquid Staking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 2710863,
+      "change_7d": -8.01,
+      "mcap_usd": null,
+      "listed_at": "2025-06-15",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-81",
+      "name": "Atlas Flow 81",
+      "category": "Lending",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 33.31,
+      "mcap_usd": null,
+      "listed_at": "2026-09-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-82",
+      "name": "Velora Vault 82",
+      "category": "Dexes",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 21.77,
+      "mcap_usd": null,
+      "listed_at": "2023-01-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-83",
+      "name": "Cobalt Core 83",
+      "category": "Yield",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -16.78,
+      "mcap_usd": null,
+      "listed_at": "2024-05-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-84",
+      "name": "Kite Protocol 84",
+      "category": "Restaking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 2274644,
+      "change_7d": 23.44,
+      "mcap_usd": null,
+      "listed_at": "2023-11-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-85",
+      "name": "Lumen Finance 85",
+      "category": "Bridge",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 10.94,
+      "mcap_usd": null,
+      "listed_at": "2020-01-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-86",
+      "name": "Astra Layer 86",
+      "category": "Derivatives",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -9.59,
+      "mcap_usd": null,
+      "listed_at": "2022-09-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-87",
+      "name": "Arbor Labs 87",
+      "category": "Infrastructure",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 1458088,
+      "change_7d": -2.06,
+      "mcap_usd": null,
+      "listed_at": "2020-06-25",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-88",
+      "name": "Mirage Engine 88",
+      "category": "Liquid Staking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 20062212,
+      "change_7d": 3.21,
+      "mcap_usd": null,
+      "listed_at": "2024-05-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-89",
+      "name": "Helios Network 89",
+      "category": "Lending",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 1134743,
+      "change_7d": 3.61,
+      "mcap_usd": null,
+      "listed_at": "2020-06-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-90",
+      "name": "Fluent One 90",
+      "category": "Dexes",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 4031355,
+      "change_7d": 20.16,
+      "mcap_usd": null,
+      "listed_at": "2021-03-21",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-91",
+      "name": "Zephyr Markets 91",
+      "category": "Yield",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 13.8,
+      "mcap_usd": null,
+      "listed_at": "2021-02-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-92",
+      "name": "Nexus Exchange 92",
+      "category": "Restaking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 14.22,
+      "mcap_usd": null,
+      "listed_at": "2022-01-25",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-93",
+      "name": "Arcadia Flow 93",
+      "category": "Bridge",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 33.1,
+      "mcap_usd": null,
+      "listed_at": "2022-05-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-94",
+      "name": "Vesper Vault 94",
+      "category": "Derivatives",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -16.6,
+      "mcap_usd": null,
+      "listed_at": "2024-02-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-95",
+      "name": "Kinetic Core 95",
+      "category": "Infrastructure",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 1093275,
+      "change_7d": 17.29,
+      "mcap_usd": null,
+      "listed_at": "2025-10-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-96",
+      "name": "Orbit Protocol 96",
+      "category": "Liquid Staking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 24.98,
+      "mcap_usd": null,
+      "listed_at": "2020-08-16",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-97",
+      "name": "Rift Finance 97",
+      "category": "Lending",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 9.93,
+      "mcap_usd": null,
+      "listed_at": "2026-09-11",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-98",
+      "name": "Axiom Layer 98",
+      "category": "Dexes",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 5.62,
+      "mcap_usd": null,
+      "listed_at": "2022-08-08",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-99",
+      "name": "Tessera Labs 99",
+      "category": "Yield",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 1788812,
+      "change_7d": 15.49,
+      "mcap_usd": null,
+      "listed_at": "2024-08-03",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-100",
+      "name": "Caldera Engine 100",
+      "category": "Restaking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -17.9,
+      "mcap_usd": null,
+      "listed_at": "2021-03-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-101",
+      "name": "Atlas Network 101",
+      "category": "Bridge",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 30.09,
+      "mcap_usd": null,
+      "listed_at": "2026-04-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-102",
+      "name": "Velora One 102",
+      "category": "Derivatives",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 3108001,
+      "change_7d": 19.26,
+      "mcap_usd": null,
+      "listed_at": "2025-11-07",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-103",
+      "name": "Cobalt Markets 103",
+      "category": "Infrastructure",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 34.1,
+      "mcap_usd": null,
+      "listed_at": "2024-09-18",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-104",
+      "name": "Kite Exchange 104",
+      "category": "Liquid Staking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 25.72,
+      "mcap_usd": null,
+      "listed_at": "2024-02-03",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-105",
+      "name": "Lumen Flow 105",
+      "category": "Lending",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 11.19,
+      "mcap_usd": null,
+      "listed_at": "2025-06-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-106",
+      "name": "Astra Vault 106",
+      "category": "Dexes",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 2.92,
+      "mcap_usd": null,
+      "listed_at": "2024-06-23",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-107",
+      "name": "Arbor Core 107",
+      "category": "Yield",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -9.14,
+      "mcap_usd": null,
+      "listed_at": "2025-10-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-108",
+      "name": "Mirage Protocol 108",
+      "category": "Restaking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 10.09,
+      "mcap_usd": null,
+      "listed_at": "2021-07-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-109",
+      "name": "Helios Finance 109",
+      "category": "Bridge",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -6.86,
+      "mcap_usd": null,
+      "listed_at": "2025-01-01",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-110",
+      "name": "Fluent Layer 110",
+      "category": "Derivatives",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 1851363,
+      "change_7d": 1.49,
+      "mcap_usd": null,
+      "listed_at": "2021-09-08",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-111",
+      "name": "Zephyr Labs 111",
+      "category": "Infrastructure",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 7553100,
+      "change_7d": 35.4,
+      "mcap_usd": null,
+      "listed_at": "2022-11-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-112",
+      "name": "Nexus Engine 112",
+      "category": "Liquid Staking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 12765152,
+      "change_7d": 11.81,
+      "mcap_usd": null,
+      "listed_at": "2026-01-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-113",
+      "name": "Arcadia Network 113",
+      "category": "Lending",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -24.66,
+      "mcap_usd": null,
+      "listed_at": "2025-02-22",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-114",
+      "name": "Vesper One 114",
+      "category": "Dexes",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 12284591,
+      "change_7d": 27.89,
+      "mcap_usd": null,
+      "listed_at": "2022-06-25",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-115",
+      "name": "Kinetic Markets 115",
+      "category": "Yield",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 37.61,
+      "mcap_usd": null,
+      "listed_at": "2020-09-19",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-116",
+      "name": "Orbit Exchange 116",
+      "category": "Restaking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 20473735,
+      "change_7d": -21.5,
+      "mcap_usd": null,
+      "listed_at": "2026-11-03",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-117",
+      "name": "Rift Flow 117",
+      "category": "Bridge",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 16.89,
+      "mcap_usd": null,
+      "listed_at": "2023-09-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-118",
+      "name": "Axiom Vault 118",
+      "category": "Derivatives",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 38.28,
+      "mcap_usd": null,
+      "listed_at": "2023-05-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-119",
+      "name": "Tessera Core 119",
+      "category": "Infrastructure",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 8998175,
+      "change_7d": -5.69,
+      "mcap_usd": null,
+      "listed_at": "2021-11-18",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-120",
+      "name": "Caldera Protocol 120",
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -18.84,
+      "mcap_usd": null,
+      "listed_at": "2023-02-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-121",
+      "name": "Atlas Finance 121",
+      "category": "Lending",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 26.64,
+      "mcap_usd": null,
+      "listed_at": "2025-11-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-122",
+      "name": "Velora Layer 122",
+      "category": "Dexes",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 24.37,
+      "mcap_usd": null,
+      "listed_at": "2025-07-04",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-123",
+      "name": "Cobalt Labs 123",
+      "category": "Yield",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 12.85,
+      "mcap_usd": null,
+      "listed_at": "2026-04-23",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-124",
+      "name": "Kite Engine 124",
+      "category": "Restaking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 3252215,
+      "change_7d": -20.64,
+      "mcap_usd": null,
+      "listed_at": "2025-05-25",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-125",
+      "name": "Lumen Network 125",
+      "category": "Bridge",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 5519860,
+      "change_7d": 8.96,
+      "mcap_usd": null,
+      "listed_at": "2025-04-15",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-126",
+      "name": "Astra One 126",
+      "category": "Derivatives",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 34.09,
+      "mcap_usd": null,
+      "listed_at": "2025-11-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-127",
+      "name": "Arbor Markets 127",
+      "category": "Infrastructure",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 16.03,
+      "mcap_usd": null,
+      "listed_at": "2026-07-05",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-128",
+      "name": "Mirage Exchange 128",
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 3224247,
+      "change_7d": 2.48,
+      "mcap_usd": null,
+      "listed_at": "2021-09-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-129",
+      "name": "Helios Flow 129",
+      "category": "Lending",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 6322937,
+      "change_7d": 9.08,
+      "mcap_usd": null,
+      "listed_at": "2021-08-24",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-130",
+      "name": "Fluent Vault 130",
+      "category": "Dexes",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 1705835,
+      "change_7d": -9.64,
+      "mcap_usd": null,
+      "listed_at": "2025-10-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-131",
+      "name": "Zephyr Core 131",
+      "category": "Yield",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 9.91,
+      "mcap_usd": null,
+      "listed_at": "2026-04-15",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-132",
+      "name": "Nexus Protocol 132",
+      "category": "Restaking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 3011927,
+      "change_7d": 39.32,
+      "mcap_usd": null,
+      "listed_at": "2021-09-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-133",
+      "name": "Arcadia Finance 133",
+      "category": "Bridge",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 16397696,
+      "change_7d": 10.56,
+      "mcap_usd": null,
+      "listed_at": "2023-10-07",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-134",
+      "name": "Vesper Layer 134",
+      "category": "Derivatives",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -19.42,
+      "mcap_usd": null,
+      "listed_at": "2020-01-22",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-135",
+      "name": "Kinetic Labs 135",
+      "category": "Infrastructure",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 27.62,
+      "mcap_usd": null,
+      "listed_at": "2022-06-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-136",
+      "name": "Orbit Engine 136",
+      "category": "Liquid Staking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 11050134,
+      "change_7d": 23.06,
+      "mcap_usd": null,
+      "listed_at": "2024-01-22",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-137",
+      "name": "Rift Network 137",
+      "category": "Lending",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 10.05,
+      "mcap_usd": null,
+      "listed_at": "2024-10-08",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-138",
+      "name": "Axiom One 138",
+      "category": "Dexes",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 6263979,
+      "change_7d": 12.04,
+      "mcap_usd": null,
+      "listed_at": "2020-10-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-139",
+      "name": "Tessera Markets 139",
+      "category": "Yield",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 7.73,
+      "mcap_usd": null,
+      "listed_at": "2023-01-25",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-140",
+      "name": "Caldera Exchange 140",
+      "category": "Restaking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 11997508,
+      "change_7d": 14.0,
+      "mcap_usd": null,
+      "listed_at": "2023-10-20",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-141",
+      "name": "Atlas Flow 141",
+      "category": "Bridge",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 21.73,
+      "mcap_usd": null,
+      "listed_at": "2026-01-05",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-142",
+      "name": "Velora Vault 142",
+      "category": "Derivatives",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 19077707,
+      "change_7d": -7.55,
+      "mcap_usd": null,
+      "listed_at": "2020-01-16",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-143",
+      "name": "Cobalt Core 143",
+      "category": "Infrastructure",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 1597689,
+      "change_7d": 15.77,
+      "mcap_usd": null,
+      "listed_at": "2020-01-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-144",
+      "name": "Kite Protocol 144",
+      "category": "Liquid Staking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -5.37,
+      "mcap_usd": null,
+      "listed_at": "2020-05-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-145",
+      "name": "Lumen Finance 145",
+      "category": "Lending",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 2250240,
+      "change_7d": -13.4,
+      "mcap_usd": null,
+      "listed_at": "2025-11-18",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-146",
+      "name": "Astra Layer 146",
+      "category": "Dexes",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 14.81,
+      "mcap_usd": null,
+      "listed_at": "2026-03-02",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-147",
+      "name": "Arbor Labs 147",
+      "category": "Yield",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 29.36,
+      "mcap_usd": null,
+      "listed_at": "2022-02-21",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-148",
+      "name": "Mirage Engine 148",
+      "category": "Restaking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 3.15,
+      "mcap_usd": null,
+      "listed_at": "2021-05-12",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-149",
+      "name": "Helios Network 149",
+      "category": "Bridge",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 6.67,
+      "mcap_usd": null,
+      "listed_at": "2020-01-28",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-150",
+      "name": "Fluent One 150",
+      "category": "Derivatives",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 17.69,
+      "mcap_usd": null,
+      "listed_at": "2026-10-13",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-151",
+      "name": "Zephyr Markets 151",
+      "category": "Infrastructure",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -14.79,
+      "mcap_usd": null,
+      "listed_at": "2023-10-16",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-152",
+      "name": "Nexus Exchange 152",
+      "category": "Liquid Staking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 4140679,
+      "change_7d": 6.47,
+      "mcap_usd": null,
+      "listed_at": "2020-11-25",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-153",
+      "name": "Arcadia Flow 153",
+      "category": "Lending",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -1.16,
+      "mcap_usd": null,
+      "listed_at": "2023-09-24",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-154",
+      "name": "Vesper Vault 154",
+      "category": "Dexes",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 28.44,
+      "mcap_usd": null,
+      "listed_at": "2020-03-04",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-155",
+      "name": "Kinetic Core 155",
+      "category": "Yield",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 36.92,
+      "mcap_usd": null,
+      "listed_at": "2020-07-08",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-156",
+      "name": "Orbit Protocol 156",
+      "category": "Restaking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 6721082,
+      "change_7d": 16.91,
+      "mcap_usd": null,
+      "listed_at": "2022-09-09",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-157",
+      "name": "Rift Finance 157",
+      "category": "Bridge",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 2467792,
+      "change_7d": -24.06,
+      "mcap_usd": null,
+      "listed_at": "2023-09-23",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-158",
+      "name": "Axiom Layer 158",
+      "category": "Derivatives",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -13.33,
+      "mcap_usd": null,
+      "listed_at": "2024-04-03",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-159",
+      "name": "Tessera Labs 159",
+      "category": "Infrastructure",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 6342651,
+      "change_7d": -6.43,
+      "mcap_usd": null,
+      "listed_at": "2026-08-16",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-160",
+      "name": "Caldera Engine 160",
+      "category": "Liquid Staking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 1740277,
+      "change_7d": -11.63,
+      "mcap_usd": null,
+      "listed_at": "2025-08-24",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-161",
+      "name": "Atlas Network 161",
+      "category": "Lending",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 4.78,
+      "mcap_usd": null,
+      "listed_at": "2020-11-27",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-162",
+      "name": "Velora One 162",
+      "category": "Dexes",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -21.92,
+      "mcap_usd": null,
+      "listed_at": "2026-01-08",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-163",
+      "name": "Cobalt Markets 163",
+      "category": "Yield",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 32.26,
+      "mcap_usd": null,
+      "listed_at": "2026-03-14",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-164",
+      "name": "Kite Exchange 164",
+      "category": "Restaking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 25.92,
+      "mcap_usd": null,
+      "listed_at": "2025-01-25",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-165",
+      "name": "Lumen Flow 165",
+      "category": "Bridge",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 5.27,
+      "mcap_usd": null,
+      "listed_at": "2026-07-27",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-166",
+      "name": "Astra Vault 166",
+      "category": "Derivatives",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 2384725,
+      "change_7d": 7.06,
+      "mcap_usd": null,
+      "listed_at": "2021-04-16",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-167",
+      "name": "Arbor Core 167",
+      "category": "Infrastructure",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 5566427,
+      "change_7d": 10.1,
+      "mcap_usd": null,
+      "listed_at": "2020-06-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-168",
+      "name": "Mirage Protocol 168",
+      "category": "Liquid Staking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 11741754,
+      "change_7d": 26.91,
+      "mcap_usd": null,
+      "listed_at": "2025-08-19",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-169",
+      "name": "Helios Finance 169",
+      "category": "Lending",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -20.4,
+      "mcap_usd": null,
+      "listed_at": "2022-08-16",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-170",
+      "name": "Fluent Layer 170",
+      "category": "Dexes",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 7.39,
+      "mcap_usd": null,
+      "listed_at": "2020-02-21",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-171",
+      "name": "Zephyr Labs 171",
+      "category": "Yield",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 1390318,
+      "change_7d": -4.45,
+      "mcap_usd": null,
+      "listed_at": "2023-07-17",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-172",
+      "name": "Nexus Engine 172",
+      "category": "Restaking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -0.34,
+      "mcap_usd": null,
+      "listed_at": "2021-08-12",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-173",
+      "name": "Arcadia Network 173",
+      "category": "Bridge",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 39.32,
+      "mcap_usd": null,
+      "listed_at": "2022-06-06",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-174",
+      "name": "Vesper One 174",
+      "category": "Derivatives",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 10.63,
+      "mcap_usd": null,
+      "listed_at": "2023-04-15",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-175",
+      "name": "Kinetic Markets 175",
+      "category": "Infrastructure",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 19.46,
+      "mcap_usd": null,
+      "listed_at": "2022-06-03",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-176",
+      "name": "Orbit Exchange 176",
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 22.67,
+      "mcap_usd": null,
+      "listed_at": "2022-02-23",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-177",
+      "name": "Rift Flow 177",
+      "category": "Lending",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 2234629,
+      "change_7d": 2.55,
+      "mcap_usd": null,
+      "listed_at": "2020-10-26",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-178",
+      "name": "Axiom Vault 178",
+      "category": "Dexes",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": 35.4,
+      "mcap_usd": null,
+      "listed_at": "2020-05-18",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-179",
+      "name": "Tessera Core 179",
+      "category": "Yield",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 1984460,
+      "change_7d": -5.1,
+      "mcap_usd": null,
+      "listed_at": "2024-04-19",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-180",
+      "name": "Caldera Protocol 180",
+      "category": "Restaking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 24000000,
+      "change_7d": -21.5,
+      "mcap_usd": null,
+      "listed_at": "2022-06-10",
+      "gecko_id": null,
+      "symbol": null
+    },
+    {
+      "slug": "synthetic-protocol-181",
+      "name": "Atlas Finance 181",
+      "category": "Bridge",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 1494758,
+      "change_7d": 5.17,
+      "mcap_usd": 740380,
+      "listed_at": "2021-06-23",
+      "gecko_id": "mock-180",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-182",
+      "name": "Velora Layer 182",
+      "category": "Derivatives",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 7707379,
+      "change_7d": 10.52,
+      "mcap_usd": 14366771,
+      "listed_at": "2026-11-01",
+      "gecko_id": "mock-181",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-183",
+      "name": "Cobalt Labs 183",
+      "category": "Infrastructure",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 678852395,
+      "change_7d": 29.54,
+      "mcap_usd": 727464758,
+      "listed_at": "2025-10-14",
+      "gecko_id": "mock-182",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-184",
+      "name": "Kite Engine 184",
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 3023558,
+      "change_7d": -19.71,
+      "mcap_usd": 5672723,
+      "listed_at": "2021-11-10",
+      "gecko_id": "mock-183",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-185",
+      "name": "Lumen Network 185",
+      "category": "Lending",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 1221349,
+      "change_7d": 37.81,
+      "mcap_usd": 727060,
+      "listed_at": "2020-01-24",
+      "gecko_id": "mock-184",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-186",
+      "name": "Astra One 186",
+      "category": "Dexes",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 3804180,
+      "change_7d": 7.32,
+      "mcap_usd": 5958471,
+      "listed_at": "2020-07-12",
+      "gecko_id": "mock-185",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-187",
+      "name": "Arbor Markets 187",
+      "category": "Yield",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 209907954,
+      "change_7d": 38.31,
+      "mcap_usd": 414147700,
+      "listed_at": "2022-01-06",
+      "gecko_id": "mock-186",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-188",
+      "name": "Mirage Exchange 188",
+      "category": "Restaking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 137484046,
+      "change_7d": 3.12,
+      "mcap_usd": 70933605,
+      "listed_at": "2022-02-23",
+      "gecko_id": "mock-187",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-189",
+      "name": "Helios Flow 189",
+      "category": "Bridge",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 521326922,
+      "change_7d": 20.16,
+      "mcap_usd": 716513007,
+      "listed_at": "2023-03-17",
+      "gecko_id": "mock-188",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-190",
+      "name": "Fluent Vault 190",
+      "category": "Derivatives",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 3232063,
+      "change_7d": -2.24,
+      "mcap_usd": 3779281,
+      "listed_at": "2026-08-03",
+      "gecko_id": "mock-189",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-191",
+      "name": "Zephyr Core 191",
+      "category": "Infrastructure",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 345995816,
+      "change_7d": 29.86,
+      "mcap_usd": 108772076,
+      "listed_at": "2022-11-19",
+      "gecko_id": "mock-190",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-192",
+      "name": "Nexus Protocol 192",
+      "category": "Liquid Staking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 2858466,
+      "change_7d": 22.2,
+      "mcap_usd": 2428377,
+      "listed_at": "2026-10-23",
+      "gecko_id": "mock-191",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-193",
+      "name": "Arcadia Finance 193",
+      "category": "Lending",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 40005847,
+      "change_7d": -8.57,
+      "mcap_usd": 49018461,
+      "listed_at": "2022-02-11",
+      "gecko_id": "mock-192",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-194",
+      "name": "Vesper Layer 194",
+      "category": "Dexes",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 7377138,
+      "change_7d": -11.6,
+      "mcap_usd": 4054141,
+      "listed_at": "2025-10-04",
+      "gecko_id": "mock-193",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-195",
+      "name": "Kinetic Labs 195",
+      "category": "Yield",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 215011065,
+      "change_7d": 41.51,
+      "mcap_usd": 159707369,
+      "listed_at": "2025-07-04",
+      "gecko_id": "mock-194",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-196",
+      "name": "Orbit Engine 196",
+      "category": "Restaking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 402232089,
+      "change_7d": 23.99,
+      "mcap_usd": 441334790,
+      "listed_at": "2021-03-05",
+      "gecko_id": "mock-195",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-197",
+      "name": "Rift Network 197",
+      "category": "Bridge",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 502670536,
+      "change_7d": 39.87,
+      "mcap_usd": 431457493,
+      "listed_at": "2026-04-28",
+      "gecko_id": "mock-196",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-198",
+      "name": "Axiom One 198",
+      "category": "Derivatives",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 1591327,
+      "change_7d": 14.27,
+      "mcap_usd": 2437853,
+      "listed_at": "2025-09-04",
+      "gecko_id": "mock-197",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-199",
+      "name": "Tessera Markets 199",
+      "category": "Infrastructure",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 81686016,
+      "change_7d": 25.29,
+      "mcap_usd": 120162639,
+      "listed_at": "2022-03-02",
+      "gecko_id": "mock-198",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-200",
+      "name": "Caldera Exchange 200",
+      "category": "Liquid Staking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 1954418051,
+      "change_7d": -19.08,
+      "mcap_usd": 1386880354,
+      "listed_at": "2023-09-01",
+      "gecko_id": "mock-199",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-201",
+      "name": "Atlas Flow 201",
+      "category": "Lending",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 257133185,
+      "change_7d": -6.17,
+      "mcap_usd": 279700042,
+      "listed_at": "2025-03-23",
+      "gecko_id": "mock-200",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-202",
+      "name": "Velora Vault 202",
+      "category": "Dexes",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 27706615,
+      "change_7d": 19.05,
+      "mcap_usd": 44175558,
+      "listed_at": "2021-05-23",
+      "gecko_id": "mock-201",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-203",
+      "name": "Cobalt Core 203",
+      "category": "Yield",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 4382843,
+      "change_7d": -13.99,
+      "mcap_usd": 5808838,
+      "listed_at": "2025-08-07",
+      "gecko_id": "mock-202",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-204",
+      "name": "Kite Protocol 204",
+      "category": "Restaking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 4006733,
+      "change_7d": 7.45,
+      "mcap_usd": 4153697,
+      "listed_at": "2024-02-12",
+      "gecko_id": "mock-203",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-205",
+      "name": "Lumen Finance 205",
+      "category": "Bridge",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 20492375,
+      "change_7d": -10.8,
+      "mcap_usd": 2314789,
+      "listed_at": "2021-11-20",
+      "gecko_id": "mock-204",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-206",
+      "name": "Astra Layer 206",
+      "category": "Derivatives",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 161647482,
+      "change_7d": 5.38,
+      "mcap_usd": 175563737,
+      "listed_at": "2022-08-27",
+      "gecko_id": "mock-205",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-207",
+      "name": "Arbor Labs 207",
+      "category": "Infrastructure",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 19205847,
+      "change_7d": 19.61,
+      "mcap_usd": 29032403,
+      "listed_at": "2022-11-02",
+      "gecko_id": "mock-206",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-208",
+      "name": "Mirage Engine 208",
+      "category": "Liquid Staking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 7467085,
+      "change_7d": 22.92,
+      "mcap_usd": 9732136,
+      "listed_at": "2026-08-12",
+      "gecko_id": "mock-207",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-209",
+      "name": "Helios Network 209",
+      "category": "Lending",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 18726067,
+      "change_7d": 28.56,
+      "mcap_usd": 37395688,
+      "listed_at": "2024-05-27",
+      "gecko_id": "mock-208",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-210",
+      "name": "Fluent One 210",
+      "category": "Dexes",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 14792433,
+      "change_7d": 22.39,
+      "mcap_usd": 3174806,
+      "listed_at": "2022-04-24",
+      "gecko_id": "mock-209",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-211",
+      "name": "Zephyr Markets 211",
+      "category": "Yield",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 85312966,
+      "change_7d": 3.65,
+      "mcap_usd": 82629535,
+      "listed_at": "2020-08-24",
+      "gecko_id": "mock-210",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-212",
+      "name": "Nexus Exchange 212",
+      "category": "Restaking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 1503465,
+      "change_7d": -24.13,
+      "mcap_usd": 1663582,
+      "listed_at": "2026-05-27",
+      "gecko_id": "mock-211",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-213",
+      "name": "Arcadia Flow 213",
+      "category": "Bridge",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 727811615,
+      "change_7d": 5.57,
+      "mcap_usd": 324667281,
+      "listed_at": "2022-05-25",
+      "gecko_id": "mock-212",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-214",
+      "name": "Vesper Vault 214",
+      "category": "Derivatives",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 291236479,
+      "change_7d": -13.89,
+      "mcap_usd": 66773861,
+      "listed_at": "2020-10-06",
+      "gecko_id": "mock-213",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-215",
+      "name": "Kinetic Core 215",
+      "category": "Infrastructure",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 109556942,
+      "change_7d": -5.93,
+      "mcap_usd": 173729128,
+      "listed_at": "2021-05-02",
+      "gecko_id": "mock-214",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-216",
+      "name": "Orbit Protocol 216",
+      "category": "Liquid Staking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 3724512,
+      "change_7d": 35.92,
+      "mcap_usd": 925072,
+      "listed_at": "2022-03-22",
+      "gecko_id": "mock-215",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-217",
+      "name": "Rift Finance 217",
+      "category": "Lending",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 298475591,
+      "change_7d": 7.21,
+      "mcap_usd": 447434242,
+      "listed_at": "2022-11-15",
+      "gecko_id": "mock-216",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-218",
+      "name": "Axiom Layer 218",
+      "category": "Dexes",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 218423537,
+      "change_7d": 38.0,
+      "mcap_usd": 332397833,
+      "listed_at": "2024-11-06",
+      "gecko_id": "mock-217",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-219",
+      "name": "Tessera Labs 219",
+      "category": "Yield",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 32445506,
+      "change_7d": -23.33,
+      "mcap_usd": 49839838,
+      "listed_at": "2023-05-10",
+      "gecko_id": "mock-218",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-220",
+      "name": "Caldera Engine 220",
+      "category": "Restaking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 447003473,
+      "change_7d": 19.95,
+      "mcap_usd": 875635548,
+      "listed_at": "2025-04-24",
+      "gecko_id": "mock-219",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-221",
+      "name": "Atlas Network 221",
+      "category": "Bridge",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 2118717,
+      "change_7d": 8.65,
+      "mcap_usd": 3258320,
+      "listed_at": "2026-01-22",
+      "gecko_id": "mock-220",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-222",
+      "name": "Velora One 222",
+      "category": "Derivatives",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 8128974,
+      "change_7d": -18.14,
+      "mcap_usd": 1640765,
+      "listed_at": "2021-06-25",
+      "gecko_id": "mock-221",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-223",
+      "name": "Cobalt Markets 223",
+      "category": "Infrastructure",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 1448929998,
+      "change_7d": -18.03,
+      "mcap_usd": 1690629529,
+      "listed_at": "2020-10-22",
+      "gecko_id": "mock-222",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-224",
+      "name": "Kite Exchange 224",
+      "category": "Liquid Staking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 401044802,
+      "change_7d": 21.44,
+      "mcap_usd": 645695531,
+      "listed_at": "2020-09-22",
+      "gecko_id": "mock-223",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-225",
+      "name": "Lumen Flow 225",
+      "category": "Lending",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 4798946,
+      "change_7d": 39.07,
+      "mcap_usd": 7326982,
+      "listed_at": "2022-01-24",
+      "gecko_id": "mock-224",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-226",
+      "name": "Astra Vault 226",
+      "category": "Dexes",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 36620118,
+      "change_7d": 24.59,
+      "mcap_usd": 59038110,
+      "listed_at": "2021-01-10",
+      "gecko_id": "mock-225",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-227",
+      "name": "Arbor Core 227",
+      "category": "Yield",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 1922519413,
+      "change_7d": 12.02,
+      "mcap_usd": 3790309797,
+      "listed_at": "2026-06-10",
+      "gecko_id": "mock-226",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-228",
+      "name": "Mirage Protocol 228",
+      "category": "Restaking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 11300613,
+      "change_7d": 38.15,
+      "mcap_usd": 18801273,
+      "listed_at": "2022-06-24",
+      "gecko_id": "mock-227",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-229",
+      "name": "Helios Finance 229",
+      "category": "Bridge",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 56912438,
+      "change_7d": -23.9,
+      "mcap_usd": 102405782,
+      "listed_at": "2021-08-25",
+      "gecko_id": "mock-228",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-230",
+      "name": "Fluent Layer 230",
+      "category": "Derivatives",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 1855096821,
+      "change_7d": 18.17,
+      "mcap_usd": 441638997,
+      "listed_at": "2024-04-25",
+      "gecko_id": "mock-229",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-231",
+      "name": "Zephyr Labs 231",
+      "category": "Infrastructure",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 2343383,
+      "change_7d": 32.92,
+      "mcap_usd": 4035598,
+      "listed_at": "2025-08-24",
+      "gecko_id": "mock-230",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-232",
+      "name": "Nexus Engine 232",
+      "category": "Liquid Staking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 5579787,
+      "change_7d": -17.32,
+      "mcap_usd": 3567675,
+      "listed_at": "2021-10-15",
+      "gecko_id": "mock-231",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-233",
+      "name": "Arcadia Network 233",
+      "category": "Lending",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 759747254,
+      "change_7d": 1.93,
+      "mcap_usd": 836849555,
+      "listed_at": "2020-04-06",
+      "gecko_id": "mock-232",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-234",
+      "name": "Vesper One 234",
+      "category": "Dexes",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 8650639,
+      "change_7d": 40.17,
+      "mcap_usd": 9281483,
+      "listed_at": "2021-11-25",
+      "gecko_id": "mock-233",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-235",
+      "name": "Kinetic Markets 235",
+      "category": "Yield",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 794682573,
+      "change_7d": 13.12,
+      "mcap_usd": 1541516321,
+      "listed_at": "2020-02-05",
+      "gecko_id": "mock-234",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-236",
+      "name": "Orbit Exchange 236",
+      "category": "Restaking",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 27724295,
+      "change_7d": -14.87,
+      "mcap_usd": 31141993,
+      "listed_at": "2022-02-08",
+      "gecko_id": "mock-235",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-237",
+      "name": "Rift Flow 237",
+      "category": "Bridge",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 95205273,
+      "change_7d": 3.1,
+      "mcap_usd": 145179236,
+      "listed_at": "2023-08-21",
+      "gecko_id": "mock-236",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-238",
+      "name": "Axiom Vault 238",
+      "category": "Derivatives",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 1009796,
+      "change_7d": 4.93,
+      "mcap_usd": 1079218,
+      "listed_at": "2024-03-22",
+      "gecko_id": "mock-237",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-239",
+      "name": "Tessera Core 239",
+      "category": "Infrastructure",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 78831210,
+      "change_7d": -12.35,
+      "mcap_usd": 125480260,
+      "listed_at": "2021-06-24",
+      "gecko_id": "mock-238",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-240",
+      "name": "Caldera Protocol 240",
+      "category": "Liquid Staking",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 12962120,
+      "change_7d": 9.48,
+      "mcap_usd": 21120249,
+      "listed_at": "2025-07-18",
+      "gecko_id": "mock-239",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-241",
+      "name": "Atlas Finance 241",
+      "category": "Lending",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 40571230,
+      "change_7d": -6.54,
+      "mcap_usd": 43154661,
+      "listed_at": "2021-08-24",
+      "gecko_id": "mock-240",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-242",
+      "name": "Velora Layer 242",
+      "category": "Dexes",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 23328155,
+      "change_7d": -6.94,
+      "mcap_usd": 8054850,
+      "listed_at": "2026-02-22",
+      "gecko_id": "mock-241",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-243",
+      "name": "Cobalt Labs 243",
+      "category": "Yield",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 178003429,
+      "change_7d": 18.28,
+      "mcap_usd": 263209635,
+      "listed_at": "2024-04-10",
+      "gecko_id": "mock-242",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-244",
+      "name": "Kite Engine 244",
+      "category": "Restaking",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 119640391,
+      "change_7d": -8.39,
+      "mcap_usd": 19320514,
+      "listed_at": "2022-11-09",
+      "gecko_id": "mock-243",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-245",
+      "name": "Lumen Network 245",
+      "category": "Bridge",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 92950038,
+      "change_7d": 12.64,
+      "mcap_usd": 101592563,
+      "listed_at": "2022-11-28",
+      "gecko_id": "mock-244",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-246",
+      "name": "Astra One 246",
+      "category": "Derivatives",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 4994047,
+      "change_7d": 9.97,
+      "mcap_usd": 8242792,
+      "listed_at": "2026-07-12",
+      "gecko_id": "mock-245",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-247",
+      "name": "Arbor Markets 247",
+      "category": "Infrastructure",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 257316061,
+      "change_7d": 36.92,
+      "mcap_usd": 128338129,
+      "listed_at": "2025-08-03",
+      "gecko_id": "mock-246",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-248",
+      "name": "Mirage Exchange 248",
+      "category": "Liquid Staking",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 1182027,
+      "change_7d": -2.09,
+      "mcap_usd": 2094520,
+      "listed_at": "2026-05-03",
+      "gecko_id": "mock-247",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-249",
+      "name": "Helios Flow 249",
+      "category": "Lending",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 1279501,
+      "change_7d": -4.48,
+      "mcap_usd": 919717,
+      "listed_at": "2023-05-25",
+      "gecko_id": "mock-248",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-250",
+      "name": "Fluent Vault 250",
+      "category": "Dexes",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 6920677,
+      "change_7d": 18.25,
+      "mcap_usd": 5909358,
+      "listed_at": "2021-06-23",
+      "gecko_id": "mock-249",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-251",
+      "name": "Zephyr Core 251",
+      "category": "Yield",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 313327153,
+      "change_7d": -1.0,
+      "mcap_usd": 383912188,
+      "listed_at": "2022-01-12",
+      "gecko_id": "mock-250",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-252",
+      "name": "Nexus Protocol 252",
+      "category": "Restaking",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 125080457,
+      "change_7d": 27.58,
+      "mcap_usd": 150824506,
+      "listed_at": "2024-05-28",
+      "gecko_id": "mock-251",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-253",
+      "name": "Arcadia Finance 253",
+      "category": "Bridge",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 60001802,
+      "change_7d": -4.35,
+      "mcap_usd": 68743068,
+      "listed_at": "2025-01-11",
+      "gecko_id": "mock-252",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-254",
+      "name": "Vesper Layer 254",
+      "category": "Derivatives",
+      "chains": [
+        "Solana"
+      ],
+      "tvl_usd": 923324317,
+      "change_7d": -0.42,
+      "mcap_usd": 1748593280,
+      "listed_at": "2025-10-02",
+      "gecko_id": "mock-253",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-255",
+      "name": "Kinetic Labs 255",
+      "category": "Infrastructure",
+      "chains": [
+        "Avalanche"
+      ],
+      "tvl_usd": 864667414,
+      "change_7d": 3.04,
+      "mcap_usd": 1332554399,
+      "listed_at": "2020-07-13",
+      "gecko_id": "mock-254",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-256",
+      "name": "Orbit Engine 256",
+      "category": "Liquid Staking",
+      "chains": [
+        "Arbitrum"
+      ],
+      "tvl_usd": 170979041,
+      "change_7d": -17.16,
+      "mcap_usd": 218140731,
+      "listed_at": "2021-10-23",
+      "gecko_id": "mock-255",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-257",
+      "name": "Rift Network 257",
+      "category": "Lending",
+      "chains": [
+        "Optimism"
+      ],
+      "tvl_usd": 17503022,
+      "change_7d": 37.97,
+      "mcap_usd": 3580434,
+      "listed_at": "2023-06-16",
+      "gecko_id": "mock-256",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-258",
+      "name": "Axiom One 258",
+      "category": "Dexes",
+      "chains": [
+        "Base"
+      ],
+      "tvl_usd": 4472860,
+      "change_7d": 9.46,
+      "mcap_usd": 8439211,
+      "listed_at": "2025-03-25",
+      "gecko_id": "mock-257",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-259",
+      "name": "Tessera Markets 259",
+      "category": "Yield",
+      "chains": [
+        "Polygon"
+      ],
+      "tvl_usd": 38248206,
+      "change_7d": -6.85,
+      "mcap_usd": 21038351,
+      "listed_at": "2024-10-11",
+      "gecko_id": "mock-258",
+      "symbol": "SYN"
+    },
+    {
+      "slug": "synthetic-protocol-260",
+      "name": "Caldera Exchange 260",
+      "category": "Restaking",
+      "chains": [
+        "Ethereum"
+      ],
+      "tvl_usd": 1718330,
+      "change_7d": 24.71,
+      "mcap_usd": 3000905,
+      "listed_at": "2021-11-27",
+      "gecko_id": "mock-259",
+      "symbol": "SYN"
+    }
+  ],
+  "watchlist": [
+    "synthetic-protocol-1",
+    "synthetic-protocol-2",
+    "synthetic-protocol-3",
+    "synthetic-protocol-4",
+    "synthetic-protocol-5",
+    "synthetic-protocol-6",
+    "synthetic-protocol-7",
+    "synthetic-protocol-8",
+    "synthetic-protocol-9",
+    "synthetic-protocol-10",
+    "synthetic-protocol-11",
+    "synthetic-protocol-12",
+    "synthetic-protocol-13",
+    "synthetic-protocol-14",
+    "synthetic-protocol-15",
+    "synthetic-protocol-16",
+    "synthetic-protocol-17",
+    "synthetic-protocol-18",
+    "synthetic-protocol-19",
+    "synthetic-protocol-20",
+    "synthetic-protocol-21",
+    "synthetic-protocol-22",
+    "synthetic-protocol-23",
+    "synthetic-protocol-24",
+    "synthetic-protocol-25",
+    "synthetic-protocol-26",
+    "synthetic-protocol-27",
+    "synthetic-protocol-28",
+    "synthetic-protocol-29",
+    "synthetic-protocol-30",
+    "synthetic-protocol-31",
+    "synthetic-protocol-32",
+    "synthetic-protocol-33",
+    "synthetic-protocol-34",
+    "synthetic-protocol-35",
+    "synthetic-protocol-36",
+    "synthetic-protocol-37",
+    "synthetic-protocol-38",
+    "synthetic-protocol-39",
+    "synthetic-protocol-40"
+  ]
+}

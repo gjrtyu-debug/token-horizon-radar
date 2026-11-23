@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Token Horizon — Pre-token intelligence</title><link rel="stylesheet" href="style.css"></head>
+<body><div class="shell">
+<aside class="side">
+ <div class="brand"><span class="mark">◈</span><div><b>TOKEN<br>HORIZON</b><small>RESEARCH TERMINAL</small></div></div>
+ <div class="group-title">WORKSPACE</div>
+ <nav><button class="nav active" id="nav-all"><span>◫</span> Launch radar</button><button class="nav" id="nav-watch"><span>◎</span> Watchlist</button><button class="nav" id="nav-early"><span>✧</span> Early signals</button></nav>
+ <div class="group-title">RESEARCH NOTES</div>
+ <div class="note">No token or airdrop is guaranteed. Values are scenario estimates based on the sealed data snapshot—not token-price forecasts.</div>
+ <div class="side-foot"><span class="status-dot"></span> OFFLINE MODE<br><small>No data leaves this browser</small></div>
+</aside>
+<main class="main"><header class="topbar"><div class="breadcrumb">INTELLIGENCE <span>/</span> TOKEN LAUNCH RADAR</div><div class="topright"><span class="live-dot"></span><span>SNAPSHOT ANALYSIS</span><span class="date" id="date">—</span></div></header>
+<div class="content"><div class="intro"><div><div class="eyebrow">RESEARCH / 001</div><h1>Pre-token <em>radar.</em></h1><p>A defensible market view of protocols without a recorded token. Find a signal, inspect its drivers, and plan the next research step.</p></div><div class="intro-card"><span>MODEL</span><strong>COHORT / 01</strong><small>Peer-calibrated • Risk-aware</small></div></div>
+<div class="stats"><div class="stat"><span>TRACKED PROTOCOLS</span><strong id="n-total">—</strong><small>Eligible pre-token universe</small></div><div class="stat"><span>WATCHLIST COVERAGE</span><strong id="n-watch">—</strong><small>Included in ranked board</small></div><div class="stat"><span>EARLY DISCOVERY</span><strong id="n-early">—</strong><small>Below watchlist threshold</small></div><div class="stat"><span>COMPARABLES</span><strong id="n-comp">—</strong><small>Live-token reference set</small></div></div>
+<section class="work"><div class="workheading"><div><h2>Launch candidates <span class="count" id="count">0</span></h2><p>Ranked by implied network value · USD</p></div><button class="export" id="export">↓ Export board</button></div>
+<div class="filters"><label class="search"><span>⌕</span><input id="search" placeholder="Search protocol, chain, category..." autocomplete="off"></label><select id="chain"><option value="">All chains</option></select><select id="category"><option value="">All categories</option></select><select id="sort"><option value="value">Implied value</option><option value="growth">7-day change</option><option value="confidence">Confidence</option><option value="tvl">TVL</option></select></div>
+<div class="table-scroll"><table><thead><tr><th>RANK / PROTOCOL</th><th>CHAIN / CATEGORY</th><th>TVL</th><th>7D CHANGE</th><th>IMPLIED VALUE</th><th>CONFIDENCE</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="tablefoot"><span id="shown">0 shown</span><span>Click any protocol for scenario details <b>↗</b></span></div>
+</section><footer class="foot"><span>TOKEN HORIZON · RESEARCH PROTOTYPE</span><span>Illustrative data if marked DEMO · Not investment advice</span></footer></div>
+</main>
+<aside class="detail" id="detail" aria-hidden="true"><div class="detailtop"><span>PROTOCOL INTELLIGENCE</span><button id="close" aria-label="Close details">×</button></div><div id="detail-body"></div></aside>
+</div><script src="data.js"></script><script src="app.js"></script></body></html>

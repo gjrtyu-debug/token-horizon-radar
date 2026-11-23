@@ -1,0 +1,19 @@
+2026-11-23 | TOKEN HORIZON | STATUS: CANDIDATE PROTOTYPE
+
+VERIFIED:
+- Node 22.16 local run with --experimental-strip-types
+- 163 synthetic candidate rows >= contest threshold 100
+- 40 / 40 watchlist covered in synthetic fixture
+- 8 research steps per row, all within 20-600 characters
+- Browser: list, detail, 8 steps, filtered list, zero JS errors
+- 3 PNG actual browser captures, not generated artwork
+
+NOT YET VERIFIED / NOT DONE:
+- Official contest vendor kit (vendor/makefun-board.ts) could not be fetched
+- Official dossier.json not generated
+- Sealed DefiLlama snapshot scoring / remote grader
+- Real agent transcript with authentic model-provider usage
+- GitHub publish, account link, Solana wallet signing, submission
+- Reward: 0 USDC
+
+Do not submit the ZIP as-is and assume it meets contest requirements.
