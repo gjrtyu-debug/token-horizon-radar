@@ -77,7 +77,7 @@ function makeBoard(snapshot){
  const stats={total:rows.length,watchlist:snapshot.watchlist.length,watchlist_covered:rows.filter(x=>x.origin==='watchlist').length,early:rows.filter(x=>x.origin==='early').length,median_multiple:round(global),live_comp_count:live.length,as_of:asOf,source:snapshot.source||'sealed snapshot'};
  return {rows,stats,live:live.sort((a,b)=>safeNum(b.mcap_usd)-safeNum(a.mcap_usd)).slice(0,18).map(p=>({name:p.name,category:p.category,tvl_usd:p.tvl_usd,mcap_usd:p.mcap_usd}))};
 }
-function copyDirFlat(from,to){mkdirSync(to,{recursive:true});for(const f of readdirSync(from)){const s=join(from,f);if(statSync(s).isFile())copyFileSync(s,join(to,f));}}
+function copyDirFlat(from,to){if(!existsSync(from))return;mkdirSync(to,{recursive:true});for(const f of readdirSync(from)){const s=join(from,f);if(statSync(s).isFile())copyFileSync(s,join(to,f));}}
 if(!existsSync(source)){console.error(`Snapshot not found: ${source}. Supply --input path/to/snapshot.json`);process.exit(2)}
 const snapshot=JSON.parse(readFileSync(source,'utf8'));
 const result=makeBoard(snapshot);
@@ -90,9 +90,8 @@ writeFileSync(join(outdir,'dashboard','data.js'),'window.TOKEN_HORIZON_DATA='+JS
 // Do not substitute an invented dossier for the official verified dossier.
 const vendorPath=join(home,'vendor','makefun-board.ts');
 if(existsSync(vendorPath)){
- try {const {buildDossier}=await import('./vendor/makefun-board.ts');
-  writeFileSync(join(outdir,'dossier.json'),buildDossier(outdir,{text_max_bytes:65536,screenshots:{max:4,max_bytes:524288},dashboard:{max_files:400,max_bytes:4194304}}));
-  console.log('Official dossier written.');
- }catch(e){console.warn('Dossier not written:',e.message);}
+ const {buildDossier}=await import('./vendor/makefun-board.ts');
+ writeFileSync(join(outdir,'dossier.json'),buildDossier(outdir,{text_max_bytes:65536,screenshots:{max:4,max_bytes:524288},dashboard:{max_files:400,max_bytes:4194304}}));
+ console.log('Official dossier written.');
 }else console.warn('MISSING official vendor/makefun-board.ts: download the contest kit before submitting.');
 console.log(JSON.stringify({outdir,stats:result.stats},null,2));
