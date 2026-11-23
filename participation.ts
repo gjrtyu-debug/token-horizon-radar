@@ -139,7 +139,8 @@ const generic: Playbook = {
 
 export function buildParticipation(candidate: Candidate) {
   const route = protocolRoutes[candidate.slug];
-  const selected = playbooks.find(([pattern]) => pattern.test(candidate.category))?.[1] ?? generic;
+  const category = candidate.category.toLowerCase();
+  const selected = playbooks.find(([pattern]) => pattern.test(category))?.[1] ?? generic;
   const chain = candidate.chains[0] ?? 'the supported network';
   const inspect = route?.inspect ?? selected.inspect;
   const exit = route?.exit ?? selected.exit;
