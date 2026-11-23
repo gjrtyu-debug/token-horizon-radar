@@ -1,97 +1,251 @@
 // SPDX-License-Identifier: MIT
-// Token Horizon — original local data transformer for make.fun token-radar-01.
-// Node 22.18+ required by the contest; uses Node standard library only.
-import { readFileSync, writeFileSync, mkdirSync, copyFileSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { resolve, join } from 'node:path';
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const home = fileURLToPath(new URL('.', import.meta.url));
-const flag = (name, fallback) => { const i=process.argv.indexOf('--'+name); return i>=0?process.argv[i+1]:(process.argv.find(x=>x.startsWith('--'+name+'='))?.split('=').slice(1).join('=')??fallback); };
-const input = flag('input', '/input/snapshot.json');
-const source = input.endsWith('.json') ? input : join(input, 'snapshot.json');
-const outdir = flag('output', process.env.MAKEFUN_OUTPUT_DIR || '/output');
-const safeNum = x => Number.isFinite(x) ? x : 0;
-const median = nums => { if(!nums.length) return null; const s=[...nums].sort((a,b)=>a-b); const i=s.length>>1; return s.length%2?s[i]:(s[i-1]+s[i])/2; };
-const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
-const round = (x,d=3)=>Math.round(x*(10**d))/(10**d);
-const tokenless=p=>p.mcap_usd==null && p.gecko_id==null && p.symbol==null;
-const poolProduct=p=> /(?:\b(?:wrapped|liquid staking|staked|restaked|receipt token|synthetic token)\b)/i.test(p.category||'') || /\s(?:v\d+(?:\.\d+)?|\d+\.\d+)$/i.test(p.name);
-const dayAge=(asof,listed)=>{const a=Date.parse(asof), b=Date.parse(listed);return Number.isFinite(a)&&Number.isFinite(b)?Math.max(0,Math.round((a-b)/86400000)):null;};
-const guessGas=chain=>({Ethereum:8,Solana:0.1,Base:0.2,Arbitrum:0.3,Optimism:0.2,Polygon:0.1,BSC:0.2,Avalanche:0.3})[chain]||1.5;
-function actionFor(p){
- const c=(p.category||'').toLowerCase(),chain=p.chains[0]||'supported network';
- if(/lend|borrow|collateral|cdp/.test(c)) return `Confirm the official lending app supports ${chain}; consider a small collateral deposit only after reviewing liquidation and smart-contract risks.`;
- if(/dex|exchange|swap/.test(c)) return `Check the official exchange's supported ${chain} pair; test a small swap only if transaction fees and slippage are acceptable.`;
- if(/bridge|cross.chain/.test(c)) return `Check the official bridge's route on ${chain}; verify the destination and assess bridge and finality risk before transferring.`;
- if(/staking|restak/.test(c)) return `Inspect the official staking terms on ${chain}; verify lockups and withdrawal delays before considering a small stake.`;
- if(/perp|derivative|options/.test(c)) return `Review the official trading interface on ${chain} without opening leverage; avoid positions merely to chase a speculative token.`;
- if(/yield|vault|aggregator|farm/.test(c)) return `Inspect the official vault documentation on ${chain}; check asset exposure and withdrawal terms before depositing anything.`;
- if(/prediction/.test(c)) return `Review the protocol documentation and regional eligibility; do not place a position just to pursue an unconfirmed reward.`;
- if(/payments|card/.test(c)) return `Check whether the official app supports a no-fee sandbox or test transaction on ${chain} before committing real funds.`;
- return `Explore ${p.name}'s official application on ${chain} and look for documented, low-cost participation paths before any on-chain transaction.`;
+type Protocol = {
+  slug: string;
+  name: string;
+  category?: string | null;
+  chains?: string[];
+  tvl_usd?: number | null;
+  change_7d?: number | null;
+  mcap_usd?: number | null;
+  listed_at?: string | null;
+  gecko_id?: string | null;
+  symbol?: string | null;
+};
+
+type Snapshot = {
+  protocols: Protocol[];
+  watchlist: string[];
+  as_of?: string;
+  floor_usd?: number;
+  source?: string;
+};
+
+const root = fileURLToPath(new URL('.', import.meta.url));
+const args = process.argv.slice(2);
+const noAssetCategories = /\b(?:wrapped|liquid staking|staked|restaked|receipt token|synthetic token)\b/i;
+const versionedProduct = /\s(?:v\d+(?:\.\d+)?|\d+\.\d+)$/i;
+const dayInMilliseconds = 86_400_000;
+const fallbackMultiple = 0.38;
+const minimumMultiple = 0.06;
+const maximumMultiple = 4.5;
+const cohortPrior = 6;
+
+function option(key: string, fallback: string): string {
+  const flag = '--' + key;
+  const supplied = args.find(arg => arg === flag || arg.startsWith(flag + '='));
+  if (supplied === undefined) return fallback;
+  const value = supplied === flag ? args[args.indexOf(flag) + 1] : supplied.slice(flag.length + 1);
+  if (!value || value.startsWith('--')) throw new Error('Missing value for ' + flag);
+  return value;
 }
-function farmPlan(p, value, conf, age){
- const chain=p.chains[0]||'supported network', gas=guessGas(chain);
- const capital=conf<0.40?0:Math.min(100,Math.max(10,round(Math.sqrt(Math.max(0,p.tvl_usd))/100)));
- return [
-  `VERIFY · Find ${p.name}'s official website through independent channels and confirm that the app is active on ${chain}. Cost: $0. Time: 5–10 min.`,
-  `ELIGIBILITY · Read official token, rewards, terms and geofencing notices. No token or airdrop is promised by this radar. Cost: $0. Time: 10 min.`,
-  `SAFETY · Use a dedicated wallet with a small spending limit; verify contract addresses and never disclose a recovery phrase. Cost: $0 plus optional network fee. Time: 10 min.`,
-  `PARTICIPATION · ${actionFor(p)} Cost: optional up to $${capital} at risk, or $0 if researching only. Time: 15–30 min.`,
-  `FEE CHECK · Budget approximately $${round(gas*2,2)} for two transactions on ${chain} as a rough planning placeholder; verify live gas before acting. Time: 2 min.`,
-  `TRACK · Record dates, transaction IDs and any points in your own log. Check official updates weekly; avoid artificial wash activity. Cost: $0. Time: 5 min/week.`,
-  `EXIT · Recheck smart-contract, market and withdrawal risks after 30 days${age!==null?` (protocol age ~${age} days)`:''}; withdraw unused funds if risk exceeds the expected benefit. Cost: network fees. Time: 10 min.`,
-  `CLAIM · Only follow official announcements and claim pages; do not connect a wallet to unsolicited airdrop links. Estimated scenario value $${Math.round(value).toLocaleString('en-US')} is NOT an expected payout. Cost: unknown. Time: variable.`
- ];
+
+function finite(value: number | null | undefined): number {
+  return typeof value === 'number' && Number.isFinite(value) ? value : 0;
 }
-function makeBoard(snapshot){
- if(!Array.isArray(snapshot.protocols)||!Array.isArray(snapshot.watchlist)) throw Error('Malformed snapshot: protocols/watchlist missing');
- const asOf=snapshot.as_of||'2026-11-23', floor=safeNum(snapshot.floor_usd)||1e7;
- const protocols=snapshot.protocols.filter(p=>p && typeof p.slug==='string' && p.slug && typeof p.name==='string');
- const live=protocols.filter(p=>!tokenless(p) && safeNum(p.tvl_usd)>0 && safeNum(p.mcap_usd)>0);
- const allComp=[],catComp=new Map();
- for(const p of live){const ratio=safeNum(p.mcap_usd)/safeNum(p.tvl_usd); if(!Number.isFinite(ratio)||ratio<=0||ratio>50) continue; allComp.push(ratio);const c=p.category||'Other';if(!catComp.has(c))catComp.set(c,[]);catComp.get(c).push(ratio);}
- const global=clamp(median(allComp)??0.38,0.06,4.5);
- const bySlug=new Map(protocols.map(p=>[p.slug,p]));
- const watch=new Set(snapshot.watchlist), chosen=new Map();
- for(const s of snapshot.watchlist){const p=bySlug.get(s);if(p)chosen.set(p.slug,p);}
- for(const p of protocols){if(chosen.has(p.slug)||!tokenless(p)||poolProduct(p)||p.category==='CEX'||safeNum(p.tvl_usd)<=0)continue;
-   // Explore smaller early-stage projects as well, not only the fixed watchlist.
-   if(p.tvl_usd<floor)chosen.set(p.slug,p);
- }
- const rows=[...chosen.values()].map(p=>{
-  const peers=catComp.get(p.category||'Other')||[];
-  const category=clamp(median(peers)??global,0.06,4.5);
-  // Bayesian shrinkage reduces the effect of noisy small cohorts.
-  const w=peers.length/(peers.length+6), multiple=w*category+(1-w)*global;
-  const growth=clamp(safeNum(p.change_7d),-75,150);
-  const trend=clamp(1+0.32*Math.tanh(growth/45),0.76,1.32);
-  const age=dayAge(asOf,p.listed_at);
-  const maturity=clamp(0.79+0.21*(Math.min(age??365,1460)/1460),0.79,1);
-  const implied=Math.max(1,Math.round(safeNum(p.tvl_usd)*multiple*trend*maturity));
-  const confidence=round(clamp(0.25+Math.min(peers.length/20,0.28)+Math.min(Math.log10(Math.max(1,p.tvl_usd))/30,0.28)+(age!==null?0.12:0)-(p.chains.length?0:0.08),0.12,0.88));
-  const low=Math.round(implied*(0.35+0.38*confidence)), high=Math.round(implied*(2.2-0.7*confidence));
-  return {slug:p.slug,name:p.name,category:p.category||'Other',chains:p.chains||[],tvl_usd:safeNum(p.tvl_usd),change_7d:p.change_7d??null,age_days:age,listed_at:p.listed_at??null,mcap_usd:null,gecko_id:null,symbol:null,token_status:'pre-token',origin:watch.has(p.slug)?'watchlist':'early',implied_value_usd:implied,value_low_usd:low,value_high_usd:high,confidence,model:{category_multiple:round(category),global_multiple:round(global),shrinkage_weight:round(w),peer_count:peers.length,growth_factor:round(trend),age_factor:round(maturity)},farm_steps:farmPlan(p,implied,confidence,age)};
- });
- rows.sort((a,b)=>b.implied_value_usd-a.implied_value_usd || a.slug.localeCompare(b.slug,'en'));rows.forEach((x,i)=>x.rank=i+1);
- const stats={total:rows.length,watchlist:snapshot.watchlist.length,watchlist_covered:rows.filter(x=>x.origin==='watchlist').length,early:rows.filter(x=>x.origin==='early').length,median_multiple:round(global),live_comp_count:live.length,as_of:asOf,source:snapshot.source||'sealed snapshot'};
- return {rows,stats,live:live.sort((a,b)=>safeNum(b.mcap_usd)-safeNum(a.mcap_usd)).slice(0,18).map(p=>({name:p.name,category:p.category,tvl_usd:p.tvl_usd,mcap_usd:p.mcap_usd}))};
+
+function bound(value: number, minimum: number, maximum: number): number {
+  return Math.max(minimum, Math.min(value, maximum));
 }
-function copyDirFlat(from,to){if(!existsSync(from))return;mkdirSync(to,{recursive:true});for(const f of readdirSync(from)){const s=join(from,f);if(statSync(s).isFile())copyFileSync(s,join(to,f));}}
-if(!existsSync(source)){console.error(`Snapshot not found: ${source}. Supply --input path/to/snapshot.json`);process.exit(2)}
-const snapshot=JSON.parse(readFileSync(source,'utf8'));
-const result=makeBoard(snapshot);
-if(result.rows.length<100)console.warn(`Warning: board has ${result.rows.length} rows (contest needs at least 100).`);
-if(result.stats.watchlist_covered!==snapshot.watchlist.length)console.warn('Warning: some watchlist slugs missing from the input protocols.');
-mkdirSync(outdir,{recursive:true});copyDirFlat(join(home,'dashboard'),join(outdir,'dashboard'));copyDirFlat(join(home,'screenshots'),join(outdir,'screenshots'));
-writeFileSync(join(outdir,'board.json'),JSON.stringify({rows:result.rows},null,2)+'\n');
-writeFileSync(join(outdir,'dashboard','data.js'),'window.TOKEN_HORIZON_DATA='+JSON.stringify(result)+';\n');
-// The official vendor/makefun-board.ts MUST be installed from the competition kit.
-// Do not substitute an invented dossier for the official verified dossier.
-const vendorPath=join(home,'vendor','makefun-board.ts');
-if(existsSync(vendorPath)){
- const {buildDossier}=await import('./vendor/makefun-board.ts');
- writeFileSync(join(outdir,'dossier.json'),buildDossier(outdir,{text_max_bytes:65536,screenshots:{max:4,max_bytes:524288},dashboard:{max_files:400,max_bytes:4194304}}));
- console.log('Official dossier written.');
-}else console.warn('MISSING official vendor/makefun-board.ts: download the contest kit before submitting.');
-console.log(JSON.stringify({outdir,stats:result.stats},null,2));
+
+function rounded(value: number, places = 3): number {
+  const scale = 10 ** places;
+  return Math.round(value * scale) / scale;
+}
+
+function percentile50(values: number[]): number | undefined {
+  if (values.length === 0) return undefined;
+  const sorted = values.toSorted((left, right) => left - right);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+}
+
+function hasToken(protocol: Protocol): boolean {
+  return protocol.mcap_usd != null || protocol.gecko_id != null || protocol.symbol != null;
+}
+
+function protocolCategory(protocol: Protocol): string {
+  return protocol.category || 'Other';
+}
+
+function ageOnSnapshot(snapshotDate: string, openingDate?: string | null): number | null {
+  if (!openingDate) return null;
+  const days = (Date.parse(snapshotDate) - Date.parse(openingDate)) / dayInMilliseconds;
+  return Number.isFinite(days) ? Math.max(0, Math.round(days)) : null;
+}
+
+function comparableGroups(protocols: Protocol[]) {
+  const all: number[] = [];
+  const categories = new Map<string, number[]>();
+  const live = protocols.filter(protocol => finite(protocol.mcap_usd) > 0 && finite(protocol.tvl_usd) > 0);
+  for (const protocol of live) {
+    const ratio = finite(protocol.mcap_usd) / finite(protocol.tvl_usd);
+    if (ratio > 50) continue;
+    const key = protocolCategory(protocol);
+    const group = categories.get(key) ?? [];
+    group.push(ratio);
+    categories.set(key, group);
+    all.push(ratio);
+  }
+  const benchmark = bound(percentile50(all) ?? fallbackMultiple, minimumMultiple, maximumMultiple);
+  return { benchmark, categories, live };
+}
+
+function researchPlan(protocol: Protocol, confidence: number, age: number | null): string[] {
+  const chain = protocol.chains?.[0] ?? 'its supported network';
+  const category = protocolCategory(protocol).toLowerCase();
+  const routes: [RegExp, string][] = [
+    [/lend|borrow|collateral|cdp/, 'Check permitted collateral, borrowing rates and the liquidation threshold.'],
+    [/dex|exchange|swap/, 'Get a swap quote and compare pool liquidity, fees and slippage.'],
+    [/bridge|cross.chain/, 'Check the supported route, destination address format and settlement delay.'],
+    [/staking|restak/, 'Read the staking terms, unbonding window and slashing policy.'],
+    [/perp|derivative|options/, 'Inspect the order book and margin rules without opening a leveraged position.'],
+    [/yield|vault|aggregator|farm/, 'Review strategy exposure, management fees and whether withdrawals can be paused.'],
+    [/prediction/, 'Review the market rules and local eligibility before opening any position.'],
+    [/payment|card/, 'Look for a demo or sandbox and compare its terms with the live service.'],
+  ];
+  const review = routes.find(([pattern]) => pattern.test(category))?.[1] ??
+    'Find a documented no-deposit workflow and review what information the application requests.';
+  const tvlForBudget = Math.max(0, finite(protocol.tvl_usd));
+  const testBudget = bound(Math.round(Math.sqrt(tvlForBudget) / 100), 10, 100);
+  const spendLimit = confidence < 0.4 ? 0 : testBudget;
+  const cadence = age !== null && age < 90 ? 'after one week' : 'within a month';
+
+  return [
+    `VERIFY · Confirm the canonical ${protocol.name} application and its documented deployment on ${chain}. Cost $0; 5–10 min.`,
+    'ELIGIBILITY · Check the terms, supported jurisdictions and any published rewards criteria. Cost $0; 10 min.',
+    'ISOLATE · Review permissions in a separate wallet profile and verify every contract against official documentation. Cost $0; 10 min.',
+    `EVALUATE · ${review} This review needs no funds. If testing later, the planning limit is $${spendLimit}; 15–30 min.`,
+    `ESTIMATE FEES · Preview costs for both entry and exit on ${chain} before deciding. Cost $0 for quotes; 5 min.`,
+    'TRACK · Save official announcement links and your own activity records. Recheck eligibility weekly. Cost $0; 5 min per week.',
+    `EXIT · Review risk and withdrawal terms ${cadence}. If already participating, check the network fee before withdrawing.`,
+    'CLAIM · Follow only a claim address published in verified official channels. Rewards and costs remain unknown until announced.',
+  ];
+}
+
+function rankedRow(protocol: Protocol, snapshotDate: string, watchlist: Set<string>, groups: ReturnType<typeof comparableGroups>) {
+  const category = protocolCategory(protocol);
+  const peers = groups.categories.get(category) ?? [];
+  const benchmark = groups.benchmark;
+  const categoryMultiple = bound(percentile50(peers) ?? benchmark, minimumMultiple, maximumMultiple);
+  const peerWeight = peers.length / (peers.length + cohortPrior);
+  const multiple = categoryMultiple * peerWeight + benchmark * (1 - peerWeight);
+  const weeklyChange = bound(finite(protocol.change_7d), -75, 150);
+  const momentum = bound(1 + 0.32 * Math.tanh(weeklyChange / 45), 0.76, 1.32);
+  const age = ageOnSnapshot(snapshotDate, protocol.listed_at);
+  const maturity = 0.79 + 0.21 * Math.min(age ?? 365, 1460) / 1460;
+  const tvl = finite(protocol.tvl_usd);
+  const value = Math.max(1, Math.round(tvl * multiple * momentum * maturity));
+  const chains = protocol.chains ?? [];
+  const evidence = 0.25 + Math.min(peers.length / 20, 0.28) +
+    Math.min(Math.log10(Math.max(1, tvl)) / 30, 0.28) +
+    (age === null ? 0 : 0.12) - (chains.length ? 0 : 0.08);
+  const confidence = rounded(bound(evidence, 0.12, 0.88));
+
+  return {
+    slug: protocol.slug,
+    name: protocol.name,
+    category,
+    chains,
+    tvl_usd: tvl,
+    change_7d: protocol.change_7d ?? null,
+    age_days: age,
+    listed_at: protocol.listed_at ?? null,
+    mcap_usd: null,
+    gecko_id: null,
+    symbol: null,
+    token_status: 'pre-token',
+    origin: watchlist.has(protocol.slug) ? 'watchlist' : 'early',
+    implied_value_usd: value,
+    value_low_usd: Math.round(value * (0.35 + 0.38 * confidence)),
+    value_high_usd: Math.round(value * (2.2 - 0.7 * confidence)),
+    confidence,
+    model: {
+      category_multiple: rounded(categoryMultiple),
+      global_multiple: rounded(benchmark),
+      shrinkage_weight: rounded(peerWeight),
+      peer_count: peers.length,
+      growth_factor: rounded(momentum),
+      age_factor: rounded(maturity),
+    },
+    farm_steps: researchPlan(protocol, confidence, age),
+  };
+}
+
+function analyze(snapshot: Snapshot) {
+  if (!Array.isArray(snapshot.protocols) || !Array.isArray(snapshot.watchlist)) {
+    throw new Error('Snapshot requires protocols and watchlist arrays');
+  }
+  const snapshotDate = snapshot.as_of || '2026-11-23';
+  const floor = finite(snapshot.floor_usd) || 10_000_000;
+  const watchlist = new Set(snapshot.watchlist);
+  const protocols = snapshot.protocols.filter(record =>
+    typeof record?.slug === 'string' && record.slug.length > 0 && typeof record.name === 'string');
+  const groups = comparableGroups(protocols);
+  const candidates = new Map<string, Protocol>();
+  for (const protocol of protocols) {
+    const tvl = finite(protocol.tvl_usd);
+    const earlyCandidate = !hasToken(protocol) && tvl > 0 && tvl < floor &&
+      protocol.category !== 'CEX' && !noAssetCategories.test(protocolCategory(protocol)) &&
+      !versionedProduct.test(protocol.name);
+    if (watchlist.has(protocol.slug) || earlyCandidate) candidates.set(protocol.slug, protocol);
+  }
+  const missing = [...watchlist].filter(slug => !candidates.has(slug));
+  if (missing.length) throw new Error('Watchlist protocols absent from snapshot: ' + missing.join(', '));
+
+  const rows = Array.from(candidates.values(), protocol => rankedRow(protocol, snapshotDate, watchlist, groups))
+    .sort((left, right) => right.implied_value_usd - left.implied_value_usd || left.slug.localeCompare(right.slug, 'en'))
+    .map((row, index) => ({ ...row, rank: index + 1 }));
+  const stats = {
+    total: rows.length,
+    watchlist: watchlist.size,
+    watchlist_covered: watchlist.size,
+    early: rows.length - watchlist.size,
+    median_multiple: rounded(groups.benchmark),
+    live_comp_count: groups.live.length,
+    as_of: snapshotDate,
+    source: snapshot.source || 'sealed snapshot',
+  };
+  const live = groups.live.toSorted((left, right) => finite(right.mcap_usd) - finite(left.mcap_usd))
+    .slice(0, 18)
+    .map(({ name, category, tvl_usd, mcap_usd }) => ({ name, category, tvl_usd, mcap_usd }));
+  return { rows, stats, live };
+}
+
+function copyAssets(directory: string, output: string): void {
+  const source = join(root, directory);
+  if (!existsSync(source)) return;
+  const target = join(output, directory);
+  mkdirSync(target, { recursive: true });
+  for (const entry of readdirSync(source, { withFileTypes: true })) {
+    if (entry.isFile()) copyFileSync(join(source, entry.name), join(target, entry.name));
+  }
+}
+
+const requestedInput = option('input', '/input');
+const snapshotFile = requestedInput.endsWith('.json') ? requestedInput : join(requestedInput, 'snapshot.json');
+const destination = option('output', process.env.MAKEFUN_OUTPUT_DIR || '/output');
+const snapshot: Snapshot = JSON.parse(readFileSync(snapshotFile, 'utf8'));
+const radar = analyze(snapshot);
+if (radar.rows.length < 100) console.warn('Contest minimum is 100 rows; generated ' + radar.rows.length);
+mkdirSync(destination, { recursive: true });
+copyAssets('dashboard', destination);
+copyAssets('screenshots', destination);
+writeFileSync(join(destination, 'board.json'), JSON.stringify({ rows: radar.rows }) + '\n');
+writeFileSync(join(destination, 'dashboard', 'data.js'), 'window.TOKEN_HORIZON_DATA=' + JSON.stringify(radar) + ';\n');
+
+if (existsSync(join(root, 'vendor', 'makefun-board.ts'))) {
+  const { buildDossier } = await import('./vendor/makefun-board.ts');
+  const constraints = {
+    text_max_bytes: 65_536,
+    screenshots: { max: 4, max_bytes: 524_288 },
+    dashboard: { max_files: 400, max_bytes: 4_194_304 },
+  };
+  writeFileSync(join(destination, 'dossier.json'), buildDossier(destination, constraints));
+} else {
+  console.warn('Install the official make.fun library to generate dossier.json.');
+}
+console.log(JSON.stringify(radar.stats, null, 2));

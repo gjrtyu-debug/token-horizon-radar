@@ -1,33 +1,257 @@
 /* SPDX-License-Identifier: MIT */
-(()=>{
-const DATA=window.TOKEN_HORIZON_DATA||{rows:[],stats:{},live:[]}, all=DATA.rows, stats=DATA.stats;
-const $=id=>document.getElementById(id), cur={search:'',chain:'',category:'',sort:'value',scope:'all'};
-const fmt=(n,prec=1)=>!Number.isFinite(n)?'—':n>=1e12?'$'+(n/1e12).toFixed(prec)+'T':n>=1e9?'$'+(n/1e9).toFixed(prec)+'B':n>=1e6?'$'+(n/1e6).toFixed(prec)+'M':n>=1e3?'$'+(n/1e3).toFixed(prec)+'K':'$'+Math.round(n);
-const $txt=(id,s)=>{if($(id))$(id).textContent=s};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const rate=n=>n==null?'—':`${n>=0?'+':''}${n.toFixed(1)}%`;
-$txt('n-total',all.length.toLocaleString());$txt('n-watch',stats.watchlist_covered??'—');$txt('n-early',stats.early??'—');$txt('n-comp',stats.live_comp_count??'—');$txt('date',stats.as_of??'—');
-if(stats.source==='synthetic demo'){$('date').textContent+=' · DEMO';}
-for(const [id,items] of [['chain',new Set(all.flatMap(x=>x.chains))],['category',new Set(all.map(x=>x.category))]]) {
- const el=$(id);for(const item of [...items].filter(Boolean).sort()){const opt=document.createElement('option');opt.value=item;opt.textContent=item;el.appendChild(opt)}
-}
-function view(){
- const q=cur.search.toLowerCase();let rows=all.filter(p=>(!q||`${p.name} ${p.slug} ${p.category} ${p.chains.join(' ')}`.toLowerCase().includes(q))&&(!cur.chain||p.chains.includes(cur.chain))&&(!cur.category||p.category===cur.category)&&(cur.scope==='all'||p.origin===cur.scope));
- rows=rows.slice().sort((a,b)=>cur.sort==='growth'?(b.change_7d??-999)-(a.change_7d??-999):cur.sort==='confidence'?b.confidence-a.confidence:cur.sort==='tvl'?b.tvl_usd-a.tvl_usd:b.implied_value_usd-a.implied_value_usd);
- $txt('count',rows.length);$txt('shown',`${Math.min(rows.length,120)} of ${rows.length} shown`);
- $('rows').innerHTML=rows.slice(0,120).map(p=>`<tr data-slug="${esc(p.slug)}"><td><div class="proto"><span class="rank">${String(p.rank).padStart(2,'0')}</span><span class="avatar">${esc(p.name.slice(0,2).toUpperCase())}</span><div><div class="pname">${esc(p.name)}</div><div class="slug">${esc(p.slug)}</div></div></div></td><td><div class="category">${esc(p.category)}</div><div style="margin-top:7px"><span class="chainpill">${esc(p.chains[0]||'Multi-chain')}</span></div></td><td>${fmt(p.tvl_usd)}</td><td><span class="change ${p.change_7d<0?'neg':''}">${rate(p.change_7d)}</span></td><td><span class="val">${fmt(p.implied_value_usd)}</span></td><td><div class="conf"><span class="bar"><span style="width:${Math.round(p.confidence*100)}%"></span></span>${Math.round(p.confidence*100)}%</div></td><td class="chevron">↗</td></tr>`).join('')||'<tr><td colspan="7" class="empty">No candidates match these filters.</td></tr>';
- $('rows').querySelectorAll('tr[data-slug]').forEach(tr=>tr.addEventListener('click',()=>show(tr.dataset.slug)));
-}
-function show(slug){const p=all.find(x=>x.slug===slug);if(!p)return;
-const pct=val=>val.toFixed(2)+'×',max=Math.max(p.value_high_usd,p.implied_value_usd*1.1);
-const width=n=>Math.max(7,Math.round(n/max*100));
-$('detail-body').innerHTML=`<div class="dbody"><div class="deyebrow">RANK #${p.rank} · ${esc(p.origin.toUpperCase())}</div><h2>${esc(p.name)}</h2><div class="dsub">${esc(p.category)} · ${esc(p.chains.join(', ')||'Chain unlisted')}</div><div class="bigvalue"><small>IMPLIED LAUNCH VALUE · SCENARIO</small><strong>${fmt(p.implied_value_usd,2)}</strong><div class="range">Sensitivity band ${fmt(p.value_low_usd,2)} – ${fmt(p.value_high_usd,2)}</div><svg class="chart" viewBox="0 0 420 105" preserveAspectRatio="none" aria-label="Value scenario comparison"><line x1="0" y1="93" x2="420" y2="93" stroke="#476477"/><rect x="0" y="12" width="${width(p.value_low_usd)*3.8}" height="17" rx="4" fill="#476f78"/><rect x="0" y="42" width="${width(p.implied_value_usd)*3.8}" height="17" rx="4" fill="#71e1be"/><rect x="0" y="72" width="${width(p.value_high_usd)*3.8}" height="17" rx="4" fill="#6688bd"/></svg></div><div class="mini"><div class="minibox"><small>TOTAL VALUE LOCKED</small><b>${fmt(p.tvl_usd)}</b></div><div class="minibox"><small>7D CHANGE</small><b>${rate(p.change_7d)}</b></div><div class="minibox"><small>PEER MULTIPLE</small><b>${pct(p.model.category_multiple)}</b></div><div class="minibox"><small>MODEL CONFIDENCE</small><b>${Math.round(p.confidence*100)}%</b></div></div><div class="sect">HOW THE SCENARIO IS ESTIMATED</div><p style="color:#8da3bd;font-size:11px;line-height:1.75">Implied value = TVL × shrinkage-adjusted peer multiple × capped 7D momentum × maturity factor. Based only on the sealed data snapshot. Peer sample: ${p.model.peer_count}; trend ${pct(p.model.growth_factor)}; maturity ${pct(p.model.age_factor)}. Confidence is a heuristic data-quality indicator, not a probability of token launch.</p><div class="sect">RESEARCH & PARTICIPATION PLAN</div><ol class="steps">${p.farm_steps.map((s,i)=>`<li><b>${i+1}</b><span>${esc(s)}</span></li>`).join('')}</ol><div class="risk"><strong>RISK NOTE</strong><br>Unannounced tokens and airdrops are speculative. Do not assume eligibility or rewards; verify official communications, contract risk, regional restrictions and withdrawal terms before putting capital at risk.</div></div>`;
- $('detail').classList.add('open');$('detail').setAttribute('aria-hidden','false');location.hash=encodeURIComponent(slug);
-}
-function hide(){ $('detail').classList.remove('open');$('detail').setAttribute('aria-hidden','true');try{history.replaceState(null,'',location.pathname+location.search)}catch{location.hash='';}}
-$('close').addEventListener('click',hide);
-for(const id of ['search','chain','category','sort'])$(id).addEventListener(id==='search'?'input':'change',e=>{cur[id]=e.target.value;view()});
-for(const [id,scope] of [['nav-all','all'],['nav-watch','watchlist'],['nav-early','early']])$(id).addEventListener('click',()=>{cur.scope=scope;document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');view()});
-$('export').addEventListener('click',()=>{const csv=[['rank','name','category','chains','tvl_usd','change_7d','implied_value_usd','value_low_usd','value_high_usd','confidence'],...all.map(p=>[p.rank,p.name,p.category,p.chains.join(';'),p.tvl_usd,p.change_7d,p.implied_value_usd,p.value_low_usd,p.value_high_usd,p.confidence])].map(r=>r.map(x=>'"'+String(x??'').replaceAll('"','""')+'"').join(',')).join('\r\n');const a=document.createElement('a');const u=URL.createObjectURL(new Blob(['\ufeff',csv],{type:'text/csv'}));a.href=u;a.download='token-horizon-board.csv';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});view();if(location.hash){const slug=decodeURIComponent(location.hash.slice(1));show(slug);}
+(() => {
+  const radar = window.TOKEN_HORIZON_DATA ?? { rows: [], stats: {}, live: [] };
+  const protocols = radar.rows;
+  const bySlug = new Map(protocols.map(protocol => [protocol.slug, protocol]));
+  const get = id => document.getElementById(id);
+  const state = { scope: 'all', query: '', chain: '', category: '', order: 'value', page: 0 };
+  const pageSize = 40;
+  const figures = {
+    value: protocol => protocol.implied_value_usd,
+    growth: protocol => protocol.change_7d ?? -Infinity,
+    confidence: protocol => protocol.confidence,
+    tvl: protocol => protocol.tvl_usd,
+  };
+  const scopeNames = { all: 'all', watch: 'watchlist', early: 'early' };
+
+  const money = (amount, digits = 1) => {
+    if (!Number.isFinite(amount)) return '—';
+    const units = [[1e12, 'T'], [1e9, 'B'], [1e6, 'M'], [1e3, 'K']];
+    const unit = units.find(([threshold]) => amount >= threshold);
+    return unit ? '$' + (amount / unit[0]).toFixed(digits) + unit[1] : '$' + Math.round(amount);
+  };
+
+  const change = amount => amount == null ? '—' : (amount >= 0 ? '+' : '') + amount.toFixed(1) + '%';
+  const percent = fraction => Math.round(100 * fraction) + '%';
+  const multiple = number => number.toFixed(2) + '×';
+  const setText = (id, value) => { get(id).textContent = value ?? '—'; };
+  const element = (tag, className, value) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (value !== undefined) node.textContent = value;
+    return node;
+  };
+
+  setText('n-total', protocols.length.toLocaleString('en-US'));
+  setText('n-watch', radar.stats.watchlist_covered);
+  setText('n-early', radar.stats.early);
+  setText('n-comp', radar.stats.live_comp_count);
+  const demo = radar.stats.source === 'synthetic demo';
+  setText('date', (radar.stats.as_of ?? '—') + (demo ? ' · DEMO' : ''));
+
+  for (const [id, values] of [
+    ['chain', protocols.flatMap(protocol => protocol.chains)],
+    ['category', protocols.map(protocol => protocol.category)],
+  ]) {
+    for (const value of [...new Set(values.filter(Boolean))].sort()) {
+      get(id).add(new Option(value, value));
+    }
+  }
+
+  const table = get('rows');
+  const navigation = element('div', '');
+  const previous = element('button', 'export', '‹ Previous');
+  const next = element('button', 'export', 'Next ›');
+  previous.type = next.type = 'button';
+  navigation.append(previous, next);
+  get('shown').after(navigation);
+  get('shown').setAttribute('aria-live', 'polite');
+
+  function matchingProtocols() {
+    return protocols.filter(protocol => {
+      if (state.scope !== 'all' && protocol.origin !== state.scope) return false;
+      if (state.category && protocol.category !== state.category) return false;
+      if (state.chain && !protocol.chains.includes(state.chain)) return false;
+      const searchable = [protocol.name, protocol.slug, protocol.category, ...protocol.chains];
+      return searchable.some(value => value.toLowerCase().includes(state.query));
+    }).sort((left, right) => {
+      const value = figures[state.order];
+      return value(right) - value(left) || left.rank - right.rank;
+    });
+  }
+
+  function protocolRow(protocol) {
+    const row = element('tr', '');
+    row.dataset.slug = protocol.slug;
+    const identityCell = row.insertCell();
+    const identity = element('div', 'proto');
+    const rank = element('span', 'rank', String(protocol.rank).padStart(2, '0'));
+    const avatar = element('span', 'avatar', protocol.name.slice(0, 2).toUpperCase());
+    const name = element('button', 'pname', protocol.name);
+    name.type = 'button';
+    name.style.cssText = 'background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer';
+    const names = element('div', '');
+    names.append(name, element('div', 'slug', protocol.slug));
+    identity.append(rank, avatar, names);
+    identityCell.append(identity);
+    const category = row.insertCell();
+    category.append(element('div', 'category', protocol.category));
+    category.append(element('span', 'chainpill', protocol.chains[0] ?? 'Multi-chain'));
+    row.insertCell().textContent = money(protocol.tvl_usd);
+    row.insertCell().append(element('span', protocol.change_7d < 0 ? 'change neg' : 'change', change(protocol.change_7d)));
+    row.insertCell().append(element('span', 'val', money(protocol.implied_value_usd)));
+
+    const confidence = element('div', 'conf');
+    const meter = element('span', 'bar');
+    const fill = element('span', '');
+    fill.style.width = percent(protocol.confidence);
+    meter.append(fill);
+    confidence.append(meter, document.createTextNode(percent(protocol.confidence)));
+    row.insertCell().append(confidence);
+    const arrow = row.insertCell();
+    arrow.className = 'chevron';
+    arrow.textContent = '↗';
+    return row;
+  }
+
+  function render() {
+    const matches = matchingProtocols();
+    const start = pageSize * state.page;
+    const shown = matches.slice(start, start + pageSize);
+    if (shown.length) {
+      table.replaceChildren(...shown.map(protocolRow));
+    } else {
+      const row = element('tr', '');
+      const cell = row.insertCell();
+      cell.colSpan = 7;
+      cell.className = 'empty';
+      cell.textContent = 'No candidates match these filters.';
+      table.replaceChildren(row);
+    }
+    setText('count', matches.length);
+    setText('shown', shown.length ? (start + 1) + '–' + (start + shown.length) + ' of ' + matches.length : '0 shown');
+    previous.disabled = state.page === 0;
+    next.disabled = start + pageSize >= matches.length;
+  }
+
+  function metric(label, value) {
+    const box = element('div', 'minibox');
+    box.append(element('small', '', label), element('b', '', value));
+    return box;
+  }
+
+  function scenario(protocol) {
+    const block = element('div', 'bigvalue');
+    block.append(
+      element('small', '', 'IMPLIED LAUNCH VALUE · SCENARIO'),
+      element('strong', '', money(protocol.implied_value_usd, 2)),
+      element('div', 'range', 'Sensitivity band ' + money(protocol.value_low_usd, 2) + ' – ' + money(protocol.value_high_usd, 2)),
+    );
+    const chart = element('div', 'chart');
+    chart.setAttribute('aria-label', 'Low, base and high value scenarios');
+    chart.setAttribute('role', 'img');
+    const bands = [protocol.value_low_usd, protocol.implied_value_usd, protocol.value_high_usd];
+    for (const [index, amount] of bands.entries()) {
+      const bar = element('div', '');
+      bar.style.cssText = 'height:14px;margin:7px 0;border-radius:4px';
+      bar.style.width = Math.max(7, 100 * amount / bands[2]) + '%';
+      bar.style.backgroundColor = ['#476f78', '#71e1be', '#6688bd'][index];
+      chart.append(bar);
+    }
+    block.append(chart);
+    return block;
+  }
+
+  let opener = null;
+  function show(slug, trigger = null) {
+    const protocol = bySlug.get(slug);
+    if (!protocol) return;
+    if (trigger) opener = trigger;
+    const body = element('div', 'dbody');
+    const metrics = element('div', 'mini');
+    metrics.append(
+      metric('TOTAL VALUE LOCKED', money(protocol.tvl_usd)),
+      metric('7D CHANGE', change(protocol.change_7d)),
+      metric('PEER MULTIPLE', multiple(protocol.model.category_multiple)),
+      metric('MODEL CONFIDENCE', percent(protocol.confidence)),
+    );
+    const details = element('p', '', 'The scenario uses TVL, an adjusted peer multiple, seven-day momentum and maturity. ' +
+      'Peer sample: ' + protocol.model.peer_count + '; momentum ' + multiple(protocol.model.growth_factor) +
+      '; maturity ' + multiple(protocol.model.age_factor) + '. Confidence reflects available evidence.');
+    details.style.cssText = 'color:#8da3bd;font-size:11px;line-height:1.75';
+    const plan = element('ol', 'steps');
+    for (const [index, step] of protocol.farm_steps.entries()) {
+      const item = element('li', '');
+      item.append(element('b', '', index + 1), element('span', '', step));
+      plan.append(item);
+    }
+    body.append(
+      element('div', 'deyebrow', 'RANK #' + protocol.rank + ' · ' + protocol.origin.toUpperCase()),
+      element('h2', '', protocol.name),
+      element('div', 'dsub', protocol.category + ' · ' + (protocol.chains.join(', ') || 'Chain unlisted')),
+      scenario(protocol), metrics, element('div', 'sect', 'HOW THE SCENARIO IS ESTIMATED'),
+      details, element('div', 'sect', 'RESEARCH & PARTICIPATION PLAN'), plan,
+      element('div', 'risk', 'Unannounced rewards are speculative. Verify published terms, contracts and withdrawal rules before putting funds at risk.'),
+    );
+    get('detail-body').replaceChildren(body);
+    const detail = get('detail');
+    detail.classList.add('open');
+    detail.setAttribute('aria-hidden', 'false');
+    get('close').focus();
+    if (location.hash !== '#' + encodeURIComponent(slug)) location.hash = encodeURIComponent(slug);
+  }
+
+  function hide() {
+    const detail = get('detail');
+    if (!detail.classList.contains('open')) return;
+    detail.classList.remove('open');
+    detail.setAttribute('aria-hidden', 'true');
+    history.replaceState(null, '', location.pathname + location.search);
+    opener?.focus();
+    opener = null;
+  }
+
+  function resetPage() {
+    state.page = 0;
+    render();
+  }
+
+  for (const [id, key] of [['search', 'query'], ['chain', 'chain'], ['category', 'category'], ['sort', 'order']]) {
+    get(id).addEventListener(id === 'search' ? 'input' : 'change', event => {
+      const value = event.currentTarget.value;
+      state[key] = key === 'query' ? value.trim().toLowerCase() : value;
+      resetPage();
+    });
+  }
+  for (const [id, scope] of Object.entries(scopeNames)) {
+    const button = get('nav-' + id);
+    button.addEventListener('click', () => {
+      state.scope = scope;
+      for (const item of document.querySelectorAll('.nav')) item.classList.toggle('active', item === button);
+      resetPage();
+    });
+  }
+  previous.addEventListener('click', () => { state.page--; render(); });
+  next.addEventListener('click', () => { state.page++; render(); });
+  table.addEventListener('click', event => {
+    const row = event.target.closest('tr[data-slug]');
+    if (row) show(row.dataset.slug, row.querySelector('button'));
+  });
+  get('close').addEventListener('click', hide);
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') hide(); });
+
+  get('export').addEventListener('click', () => {
+    const columns = ['rank', 'name', 'category', 'chains', 'tvl_usd', 'change_7d', 'implied_value_usd',
+      'value_low_usd', 'value_high_usd', 'confidence'];
+    const csvField = value => {
+      const text = String(value ?? '');
+      const safe = typeof value === 'string' && /^[=+\-@\t\r]/.test(text) ? "'" + text : text;
+      return '"' + safe.replaceAll('"', '""') + '"';
+    };
+    const rows = protocols.map(protocol => columns.map(key => key === 'chains' ? protocol.chains.join(';') : protocol[key]));
+    const csv = [columns, ...rows].map(row => row.map(csvField).join(',')).join('\r\n');
+    const url = URL.createObjectURL(new Blob(['\ufeff', csv], { type: 'text/csv;charset=utf-8' }));
+    const link = element('a', '');
+    link.href = url;
+    link.download = 'token-horizon-board.csv';
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+
+  render();
+  if (location.hash) {
+    let slug;
+    try { slug = decodeURIComponent(location.hash.slice(1)); } catch { slug = ''; }
+    if (slug) show(slug);
+  }
 })();
