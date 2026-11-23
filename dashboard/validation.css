@@ -1,0 +1,100 @@
+.validation-panel {
+  background: #112136;
+  border: 1px solid #30465d;
+  border-radius: 12px;
+  margin: 0 0 20px;
+  padding: 14px 18px;
+}
+
+.validation-panel h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #e3eefc;
+}
+
+.validation-panel p {
+  margin: 8px 0 0;
+  color: #aebfd2;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.validation-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px 16px;
+  margin: 0;
+}
+
+.validation-metrics dt {
+  color: #aebfd2;
+  font-size: 11px;
+}
+
+.validation-metrics dd {
+  margin: 2px 0 0;
+  color: #e3eefc;
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.validation-metrics div:nth-child(2) dd {
+  color: #71e1be;
+}
+
+.listed-peers {
+  margin-top: 8px;
+}
+
+.listed-peers summary {
+  cursor: pointer;
+  color: #9de6d3;
+  font-size: 11px;
+}
+
+.peer-scroll {
+  overflow: auto;
+  max-height: 280px;
+  margin-top: 10px;
+}
+
+.peer-scroll table {
+  min-width: 510px;
+}
+
+@media (max-width: 700px) {
+  .validation-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* A shorter header keeps ranked candidates visible beside the model evidence. */
+.content {
+  padding-top: 31px;
+}
+
+.intro {
+  margin-bottom: 22px;
+}
+
+.stats {
+  margin-bottom: 17px;
+}
+
+.stat {
+  padding-block: 17px;
+}
+
+.scenario-bar {
+  height: 10px;
+  margin: 5px 0;
+}
+
+.bigvalue .chart {
+  height: auto;
+  margin-top: 7px;
+}
+
+.detail {
+  width: min(510px, 100vw);
+}

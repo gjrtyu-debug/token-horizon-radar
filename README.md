@@ -6,7 +6,7 @@
 
 Token Horizon is an offline token launch radar built with a coding agent for the [make.fun token launch radar bounty](https://make.fun/bounty/token-radar-01). It ranks pre-token protocols by implied network value and includes the entire sealed snapshot watchlist.
 
-The dashboard explains each valuation with category-level market-cap-to-TVL comparables, momentum and maturity. Readers can filter by chain or category, browse every ranked protocol, inspect the sensitivity band and research steps, and export the board as CSV.
+The dashboard explains each valuation with a model fitted to listed-token peers using TVL, category, seven-day TVL movement and protocol age. Five outer folds test untouched peers. Model-selection folds are confined to each outer training sample. The dashboard reports median multiplicative error against the previous radar and a TVL-only baseline, plus the error-based valuation range. Readers can filter by chain or category, browse every ranked protocol, inspect the sensitivity band and research steps, and export the board as CSV.
 
 ## Run locally
 

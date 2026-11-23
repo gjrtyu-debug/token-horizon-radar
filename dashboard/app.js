@@ -33,7 +33,7 @@
   };
 
   setText('n-total', protocols.length.toLocaleString('en-US'));
-  setText('n-watch', radar.stats.watchlist_covered);
+  setText('n-watch', radar.stats.watchlist_covered + '/' + radar.stats.watchlist);
   setText('n-early', radar.stats.early);
   setText('n-comp', radar.stats.live_comp_count);
   const demo = radar.stats.source === 'synthetic demo';
@@ -141,7 +141,7 @@
     block.append(
       element('small', '', 'IMPLIED LAUNCH VALUE · SCENARIO'),
       element('strong', '', money(protocol.implied_value_usd, 2)),
-      element('div', 'range', 'Sensitivity band ' + money(protocol.value_low_usd, 2) + ' – ' + money(protocol.value_high_usd, 2)),
+      element('div', 'range', 'Peer-error range ' + money(protocol.value_low_usd, 2) + ' – ' + money(protocol.value_high_usd, 2)),
     );
     const chart = element('div', 'chart');
     chart.setAttribute('aria-label', 'Low, base and high value scenarios');
@@ -167,12 +167,15 @@
     metrics.append(
       metric('TOTAL VALUE LOCKED', money(protocol.tvl_usd)),
       metric('7D CHANGE', change(protocol.change_7d)),
-      metric('PEER MULTIPLE', multiple(protocol.model.category_multiple)),
+      metric('APPLIED CAP / TVL', multiple(protocol.model.applied_multiple)),
       metric('MODEL CONFIDENCE', percent(protocol.confidence)),
     );
-    const details = element('p', 'scenario-explanation', 'The scenario uses TVL, an adjusted peer multiple, seven-day momentum and maturity. ' +
-      'Peer sample: ' + protocol.model.peer_count + '; momentum ' + multiple(protocol.model.growth_factor) +
-      '; maturity ' + multiple(protocol.model.age_factor) + '. Confidence reflects available evidence.');
+    const factors = protocol.model;
+    const details = element('p', 'scenario-explanation',
+      'TVL × ' + multiple(factors.applied_multiple) + ' gives the estimate. Peer-group support: ' + factors.peer_count +
+      '. Size ' + multiple(factors.size_factor) + ' · 7D momentum ' + multiple(factors.growth_factor) +
+      ' · age ' + multiple(factors.age_factor) + (factors.ratio_capped ? ' · ratio cap applied.' : '.') +
+      ' The range comes from held-out peer errors; it describes a valuation scenario, not a launch probability.');
     const plan = element('ol', 'steps');
     for (const [index, step] of protocol.farm_steps.entries()) {
       const item = element('li', '');
