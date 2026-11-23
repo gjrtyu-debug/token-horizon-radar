@@ -25,7 +25,7 @@
     ['Peers tested', String(evidence.test_count)],
     ['Calibrated model', evidence.median_factor.toFixed(2) + '×'],
     ['Previous radar', evidence.previous_factor.toFixed(2) + '×'],
-    ['TVL-only baseline', evidence.tvl_factor.toFixed(2) + '×'],
+    ['Unseen-category stress test', evidence.category_stress_factor.toFixed(2) + '×'],
   ]) {
     const metric = document.createElement('div');
     metric.append(make('dt', label), make('dd', value));
@@ -34,7 +34,8 @@
 
   const description = make('p',
     'Lower is better. Median factor between each held-out estimate and its observed market cap. ' +
-      'Model selection runs inside each training fold. The data is a single snapshot of listed peers.');
+      'Stress test withholds entire categories. A robust challenger scored ' +
+      evidence.challenger_factor.toFixed(2) + '× on peer folds. The board uses the V2 calibration.');
   const reference = document.createElement('details');
   reference.className = 'listed-peers';
   reference.append(make('summary', 'View listed-token reference set · ' + radar.live.length));

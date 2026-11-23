@@ -128,6 +128,20 @@ async function run() {
     "; search.dispatchEvent(new Event('input', {bubbles:true}));");
   assert.equal(await firstSlug(), knownSlug);
   assert(await readCount() < board.rows.length, 'Filtering must narrow the board');
+  await evaluate("document.querySelector('#search').value = ''; " +
+    "document.querySelector('#search').dispatchEvent(new Event('input', {bubbles:true}));");
+  const withSource = board.rows.find(row => row.participation?.source);
+  if (withSource) {
+    await call('Page.navigate', { url: url + '#' + encodeURIComponent(withSource.slug) });
+    await expectEventually(detailName, withSource.name);
+    assert.equal(await evaluate("document.querySelector('.decision-card a').href"), withSource.participation.source);
+    assert.equal(await evaluate("document.querySelectorAll('.peer-card tbody tr').length"), 3);
+    await evaluate("document.querySelector('.quote-card summary').click(); " +
+      "document.querySelectorAll('.quote-fields input').forEach((field, index) => { " +
+      "field.value = [100, 1, 2][index]; field.dispatchEvent(new Event('input', {bubbles:true})); });");
+    const quote = await evaluate("document.querySelector('.quote-result').textContent");
+    assert(quote.includes('$3.00') && quote.includes('3.00%'), quote);
+  }
   assert.deepEqual(errors, []);
   console.log('Offline board, pagination, focus, direct details and search verified.');
 }

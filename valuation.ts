@@ -64,6 +64,9 @@ const choices = [
   { name: 'Category median', penalty: 0 },
   { name: 'Ridge, stronger shrinkage', penalty: 24 },
   { name: 'Ridge, lighter shrinkage', penalty: 8 },
+  { name: 'Ridge, robust residual weights', penalty: 8, robust: true },
+  { name: 'Ridge, robust with small-sample shrinkage', penalty: 24, robust: true },
+  { name: 'Ridge, low penalty', penalty: 2 },
 ] as const;
 
 type Choice = typeof choices[number];
@@ -79,18 +82,25 @@ function fit(peers: ListedPeer[], choice: Choice) {
 
   let coefficients = [center, 0, 0, 0];
   if (choice.penalty && samples.length >= 12) {
-    const matrix = Array.from({ length: 4 }, (_, row) =>
-      Array.from({ length: 4 }, (_, column) => row === column && row !== 0 ? choice.penalty : 0));
-    const values = Array<number>(4).fill(0);
-    for (const sample of samples) {
-      for (let row = 0; row < 4; row++) {
-        values[row] += sample.x[row] * sample.y;
-        for (let column = 0; column < 4; column++) {
-          matrix[row][column] += sample.x[row] * sample.x[column];
+    const robust = 'robust' in choice && choice.robust;
+    const iterations = robust ? 5 : 1;
+    for (let iteration = 0; iteration < iterations; iteration++) {
+      const errors = samples.map(sample => Math.abs(sample.y - dot(coefficients, sample.x)));
+      const threshold = Math.max(0.45, 1.5 * quantile(errors, 0.5));
+      const matrix = Array.from({ length: 4 }, (_, row) =>
+        Array.from({ length: 4 }, (_, column) => row === column && row !== 0 ? choice.penalty : 0));
+      const values = Array<number>(4).fill(0);
+      for (const [index, sample] of samples.entries()) {
+        const weight = iteration === 0 ? 1 : Math.min(1, threshold / Math.max(errors[index], 0.001));
+        for (let row = 0; row < 4; row++) {
+          values[row] += weight * sample.x[row] * sample.y;
+          for (let column = 0; column < 4; column++) {
+            matrix[row][column] += weight * sample.x[row] * sample.x[column];
+          }
         }
       }
+      coefficients = solve(matrix, values);
     }
-    coefficients = solve(matrix, values);
   }
 
   const residualsByCategory = new Map<string, number[]>();
@@ -162,10 +172,10 @@ function errorsForChoice(buckets: ListedPeer[][], choice: Choice): number[] {
   });
 }
 
-function chooseModel(training: ListedPeer[]): Choice {
+function chooseModel(training: ListedPeer[], candidates: readonly Choice[] = choices): Choice {
   if (training.length < 12) return choices[0];
   const validationFolds = folds(training, 4);
-  const scores = choices.map(choice => {
+  const scores = candidates.map(choice => {
     const errors = errorsForChoice(validationFolds, choice);
     const mean = errors.reduce((sum, error) => sum + error, 0) / errors.length;
     return { choice, mean };
@@ -179,33 +189,75 @@ export function calibrate(listed: ListedPeer[]) {
   const heldOut = folds(peers, 5);
   const residuals: number[] = [];
   const previousErrors: number[] = [];
+  const priorCalibratedErrors: number[] = [];
+  const incumbentResiduals: number[] = [];
+  const categoryStressErrors: number[] = [];
   const tvlErrors: number[] = [];
   for (const [index, validation] of heldOut.entries()) {
     const training = heldOut.filter((_, fold) => fold !== index).flat();
     if (!training.length) continue;
     const challenger = fit(training, chooseModel(training));
+    const priorCalibrated = fit(training, chooseModel(training, choices.slice(0, 3)));
     const tvlRatios = training.map(peer => Math.log(peer.marketCap / peer.tvl));
     const tvlMultiple = Math.exp(quantile(tvlRatios, 0.5));
     for (const peer of validation) {
       residuals.push(Math.log(peer.marketCap / challenger(peer).value));
       previousErrors.push(Math.abs(Math.log(peer.marketCap / previousPrediction(training, peer))));
+      const error = Math.log(peer.marketCap / priorCalibrated(peer).value);
+      incumbentResiduals.push(error);
+      priorCalibratedErrors.push(Math.abs(error));
       tvlErrors.push(Math.abs(Math.log(peer.marketCap / (peer.tvl * tvlMultiple))));
     }
   }
 
-  const selected = chooseModel(peers);
+  // Keep the validated V2 protocol for the live board. The new robust challenger
+  // is reported separately and never replaces the incumbent on a weaker holdout result.
+  const incumbentChoices = choices.slice(0, 3);
+  const selected = chooseModel(peers, incumbentChoices);
   const predict = fit(peers, selected);
-  const lowResidual = residuals.length >= 12 ? Math.min(0, quantile(residuals, 0.1)) : Math.log(0.4);
-  const highResidual = residuals.length >= 12 ? Math.max(0, quantile(residuals, 0.9)) : Math.log(2.5);
+  const categories = [...new Set(peers.map(peer => peer.category))];
+  for (const category of categories) {
+    const training = peers.filter(peer => peer.category !== category);
+    if (training.length < 12) continue;
+    const estimate = fit(training, chooseModel(training, incumbentChoices));
+    for (const peer of peers.filter(item => item.category === category)) {
+      categoryStressErrors.push(Math.abs(Math.log(peer.marketCap / estimate(peer).value)));
+    }
+  }
+  const lowResidual = residuals.length >= 12 ? Math.min(0, quantile(incumbentResiduals, 0.1)) : Math.log(0.4);
+  const highResidual = residuals.length >= 12 ? Math.max(0, quantile(incumbentResiduals, 0.9)) : Math.log(2.5);
   const factor = (errors: number[]) => errors.length ? Math.exp(quantile(errors, 0.5)) : null;
+
+  function referencePeers(observation: ValueObservation) {
+    const point = features(observation);
+    const matches = peers.map(peer => {
+      const compared = features(peer);
+      const gap = Math.abs(point[1] - compared[1]) + Math.abs(point[2] - compared[2]) +
+        Math.abs(point[3] - compared[3]) + (peer.category === observation.category ? 0 : 1.5);
+      return { peer, gap };
+    }).sort((left, right) => left.gap - right.gap || left.peer.slug.localeCompare(right.peer.slug, 'en'));
+    return matches.slice(0, 3).map(({peer}) => ({
+      slug: peer.slug,
+      name: peer.name,
+      category: peer.category,
+      same_category: peer.category === observation.category,
+      tvl_usd: peer.tvl,
+      mcap_usd: peer.marketCap,
+      multiple: peer.marketCap / peer.tvl,
+    }));
+  }
 
   return {
     evidence: {
       model: selected.name,
       test_count: residuals.length,
       folds: heldOut.length,
-      median_factor: factor(residuals.map(Math.abs)),
+      median_factor: factor(priorCalibratedErrors),
+      challenger_factor: factor(residuals.map(Math.abs)),
       previous_factor: factor(previousErrors),
+      v2_factor: factor(priorCalibratedErrors),
+      category_stress_factor: factor(categoryStressErrors),
+      category_stress_count: categoryStressErrors.length,
       tvl_factor: factor(tvlErrors),
     },
     estimate(observation: ValueObservation) {
@@ -214,6 +266,7 @@ export function calibrate(listed: ListedPeer[]) {
       return {
         ...fitted,
         value,
+        peer_examples: referencePeers(observation),
         low: Math.max(1, Math.round(value * Math.exp(lowResidual))),
         high: Math.round(value * Math.exp(highResidual)),
       };

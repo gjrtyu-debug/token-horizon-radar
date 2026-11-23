@@ -87,7 +87,9 @@
     name.type = 'button';
     name.setAttribute('aria-label', 'Open details for ' + protocol.name);
     const names = element('div', '');
-    names.append(name, element('div', 'slug', protocol.slug));
+    const identifier = element('div', 'slug', protocol.slug);
+    if (protocol.participation.source) identifier.append(element('span', 'published-route', 'Source linked'));
+    names.append(name, identifier);
     identity.append(rank, avatar, names);
     identityCell.append(identity);
     const category = row.insertCell();
@@ -182,12 +184,14 @@
       item.append(element('b', '', index + 1), element('span', '', step));
       plan.append(item);
     }
+    const evidence = window.TokenHorizonEvidence;
     body.append(
       element('div', 'deyebrow', 'RANK #' + protocol.rank + ' · ' + protocol.origin.toUpperCase()),
       element('h2', '', protocol.name),
       element('div', 'dsub', protocol.category + ' · ' + (protocol.chains.join(', ') || 'Chain unlisted')),
-      scenario(protocol), metrics, element('div', 'sect', 'HOW THE SCENARIO IS ESTIMATED'),
-      details, element('div', 'sect', 'RESEARCH & PARTICIPATION PLAN'), plan,
+      evidence.planCard(protocol), scenario(protocol), metrics, element('div', 'sect', 'HOW THE SCENARIO IS ESTIMATED'),
+      details, evidence.peerCard(protocol), element('div', 'sect', 'RESEARCH & PARTICIPATION PLAN'),
+      plan, evidence.quoteCard(protocol),
       element('div', 'risk', 'Unannounced rewards are speculative. Verify published terms, contracts and withdrawal rules before putting funds at risk.'),
     );
     get('detail-body').replaceChildren(body);

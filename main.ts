@@ -3,6 +3,7 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFi
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { calibrate } from './valuation.ts';
+import { buildParticipation } from './participation.ts';
 
 type Protocol = {
   slug: string;
@@ -77,42 +78,6 @@ function observation(protocol: Protocol, snapshotDate: string) {
   };
 }
 
-const categoryReviews: [RegExp, string][] = [
-  [/risk curator|allocator/, 'Open the curator’s vault allocation view. Compare the supply cap, concentration in each market and how much cash is available to withdraw.'],
-  [/lend|borrow|collateral|cdp/, 'Check permitted collateral, utilization, borrowing rates and the liquidation threshold.'],
-  [/dex|exchange|swap/, 'Get a swap quote and compare pool liquidity, fees and slippage.'],
-  [/bridge|cross.chain/, 'Check the supported route, destination address format and settlement delay.'],
-  [/staking|restak/, 'Read the staking terms, unbonding window and slashing policy.'],
-  [/perp|derivative|options/, 'Inspect the order book and margin rules without opening a leveraged position.'],
-  [/yield|vault|aggregator|farm/, 'Review strategy exposure, management fees and whether withdrawals can be paused.'],
-  [/prediction/, 'Review the market rules and local eligibility before opening any position.'],
-  [/payment|card/, 'Look for a demo or sandbox and compare its terms with the live service.'],
-];
-
-function researchPlan(protocol: Protocol, confidence: number, age: number | null): string[] {
-  const chain = protocol.chains?.[0] ?? 'its supported network';
-  const category = protocolCategory(protocol).toLowerCase();
-  const review = categoryReviews.find(([pattern]) => pattern.test(category))?.[1] ??
-    'Find a documented no-deposit workflow and review what information the application requests.';
-  const tvlForBudget = Math.max(0, finite(protocol.tvl_usd));
-  const testBudget = bound(Math.round(Math.sqrt(tvlForBudget) / 100), 10, 100);
-  const budget = confidence < 0.4
-    ? 'Keep this protocol at a zero-dollar research budget.'
-    : 'If testing after research, use a planning limit of $' + testBudget + '.';
-  const cadence = age !== null && age < 90 ? 'after one week' : 'within a month';
-
-  return [
-    'VERIFY · Confirm the canonical ' + protocol.name + ' application and its documented deployment on ' + chain + '. Cost $0; 5–10 min.',
-    'ELIGIBILITY · Check the terms, supported jurisdictions and any published rewards criteria. Cost $0; 10 min.',
-    'ISOLATE · Review permissions in a separate wallet profile and verify every contract against official documentation. Cost $0; 10 min.',
-    'EVALUATE · ' + review + ' ' + budget + ' Allow 15–30 min.',
-    'ESTIMATE FEES · Preview entry and withdrawal fees on ' + chain + '. Add both fees and slippage to the budget. Cost $0 for quotes; 5 min.',
-    'TRACK · Save official announcement links and your own activity records. Recheck eligibility weekly. Cost $0; 5 min per week.',
-    'EXIT · Review withdrawal delays and quote the exit fee ' + cadence + '. Cost $0 to review; 10 min plus any withdrawal delay.',
-    'CLAIM · Check the verified announcement for a claim window and fee. Cost $0 to verify; 5 min. Leave unannounced rewards out of the budget.',
-  ];
-}
-
 function rankedRow(
   protocol: Protocol,
   snapshotDate: string,
@@ -127,6 +92,7 @@ function rankedRow(
     Math.min(Math.log10(Math.max(1, tvl)) / 30, 0.28) +
     (age === null ? 0 : 0.12) - (chains.length ? 0 : 0.08);
   const confidence = rounded(bound(evidence, 0.12, 0.88));
+  const plan = buildParticipation({ slug: protocol.slug, name: protocol.name, category, chains });
 
   return {
     slug: protocol.slug,
@@ -156,8 +122,9 @@ function rankedRow(
       size_factor: rounded(estimate.sizeMultiplier),
       applied_multiple: rounded(estimate.ratio),
       ratio_capped: estimate.capped,
+      peers: estimate.peer_examples,
     },
-    farm_steps: researchPlan(protocol, confidence, age),
+    ...plan,
   };
 }
 

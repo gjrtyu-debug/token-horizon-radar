@@ -8,6 +8,12 @@ Token Horizon is an offline token launch radar built with a coding agent for the
 
 The dashboard explains each valuation with a model fitted to listed-token peers using TVL, category, seven-day TVL movement and protocol age. Five outer folds test untouched peers. Model-selection folds are confined to each outer training sample. The dashboard reports median multiplicative error against the previous radar and a TVL-only baseline, plus the error-based valuation range. Readers can filter by chain or category, browse every ranked protocol, inspect the sensitivity band and research steps, and export the board as CSV.
 
+## Evaluate a candidate
+
+Each candidate shows up to three named listed-token references, a protocol or category-specific research path, exit conditions, and an offline round-trip fee calculator. Protocol-specific references point to published documents where available. The sealed data supplies valuation inputs, while documentation informs participation checks. The board does not infer reward eligibility from either.
+
+The validation panel includes a category-held-out stress test and a separately evaluated robust challenger. The ranked board retains the V2 model and its out-of-fold error bands.
+
 ## Run locally
 
 Use Node.js 22.18 or later. From the repository root, run the bundled synthetic demo:

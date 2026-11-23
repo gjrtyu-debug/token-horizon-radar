@@ -1,0 +1,112 @@
+.evidence-card {
+  border: 1px solid #385066;
+  border-radius: 9px;
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: #14253a;
+}
+
+.evidence-card h3 {
+  color: #e1efff;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.evidence-card p {
+  color: #b7c8d8;
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.evidence-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  gap: 8px;
+}
+
+.evidence-items dt {
+  font-size: 10px;
+  color: #aebfd2;
+}
+
+.evidence-items dd {
+  margin: 3px 0 0;
+  font-size: 12px;
+  font-weight: 650;
+  color: #e1efff;
+}
+
+.evidence-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.evidence-card a,
+.evidence-card summary {
+  color: #92e8d0;
+  text-decoration-color: #4f9a88;
+  cursor: pointer;
+}
+
+.evidence-card .stop-condition {
+  border-left: 2px solid #e4b77f;
+  padding-left: 8px;
+  color: #f0d2a8;
+}
+
+.peer-card table {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.peer-card td,
+.peer-card th {
+  padding: 6px;
+  white-space: normal;
+}
+
+.peer-card small {
+  display: block;
+  margin-top: 2px;
+  color: #aebfd2;
+}
+
+.quote-fields {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(102px, 1fr));
+  margin: 10px 0;
+}
+
+.quote-fields label {
+  display: grid;
+  font-size: 10px;
+  color: #d8e5f5;
+  gap: 5px;
+}
+
+.quote-fields input {
+  width: 100%;
+  border: 1px solid #536a82;
+  background: #0c1725;
+  color: #e1efff;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.quote-card .quote-result {
+  color: #92e8d0;
+  font-weight: 650;
+}
+
+.published-route {
+  padding: 2px 5px;
+  margin-left: 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  color: #9de6d3;
+  border: 1px solid #436954;
+}
