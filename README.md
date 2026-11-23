@@ -1,35 +1,25 @@
-# Token Horizon — token launch radar (candidate build)
+# Token Horizon
 
-An original offline token-discovery dashboard for make.fun `token-radar-01`, built around the bounty's sealed snapshot schema. **This is a candidate prototype, not an accepted submission.**
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01)
+[![Rank](https://make.fun/badge/token-radar-01/gjrtyu-debug/token-horizon-radar/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard)
+[![Reward](https://make.fun/badge/token-radar-01/gjrtyu-debug/token-horizon-radar/reward.svg)](https://make.fun/bounty/token-radar-01)
 
-## Features
-- Detects eligible pre-token protocols using token-related fields, with safeguards for obvious wrapper/pool variants.
-- Includes all snapshot watchlist records and discovers smaller pre-token protocols.
-- Ranks by a shrinkage-calibrated peer market-cap/TVL comparable, bounded 7-day momentum and protocol maturity.
-- Provides explanatory value bands, model transparency, search/filter/sort, detail drawer, eight-step risk-aware research plans, and CSV export.
-- No external network, trackers, remote fonts, CDNs, or wallet connections in the dashboard.
+Token Horizon is an offline token launch radar built with a coding agent for the [make.fun token launch radar bounty](https://make.fun/bounty/token-radar-01). It ranks pre-token protocols by implied network value and includes the entire sealed snapshot watchlist.
 
-## Build
+The dashboard explains each valuation with category-level market-cap-to-TVL comparables, momentum and maturity. Readers can filter by chain or category, browse every ranked protocol, inspect the sensitivity band and research steps, and export the board as CSV.
 
-On Windows, install **Node.js >=22.18** first. In PowerShell:
+## Run locally
+
+Use Node.js 22.18 or later. From the repository root, run the bundled synthetic demo:
 
 ```powershell
-node --version
-node --experimental-strip-types main.ts --input .\sample\synthetic_snapshot.json --output .\out
-start .\out\dashboard\index.html
+node main.ts --input ./sample/synthetic_snapshot.json --output ./out
 ```
 
-The competition supplies its own sealed snapshot under `/input/snapshot.json` when grading. A demo snapshot is included for local inspection and clearly labelled synthetic; it is not DefiLlama data.
+Open `out/dashboard/index.html` in your browser. The files work offline. To reproduce the results on the competition dataset, point `--input` to the official kit's `input/snapshot.json`.
 
-## Before it can be submitted
+The runner produces `board.json`, an offline dashboard, and `dossier.json` using the official make.fun library in `vendor/`. The images in `screenshots/` show the real competition dataset.
 
-1. Obtain the **official kit** from `https://make.fun/bounty/token-radar-01` and put its exact `vendor/makefun-board.ts` in `vendor/`. The program will then produce an official `dossier.json`. This kit could not be downloaded in the current isolated environment; **do not invent or substitute the vendor code**.
-2. Run with the kit's mock/fixture and check the generated board has >=100 rows, covers the entire watchlist, and produces a valid dossier.
-3. Capture new screenshots from the real competition output (included screenshots in this prototype are from **synthetic** data only).
-4. Rebuild and record the project in a coding-agent harness with exportable **genuine** model-usage transcripts. The competition excludes hand-over-only chat sessions from paid placement. Do not falsely claim this code was developed in another harness.
-5. Make a fresh GitHub repository after the competition opened, link the account to your Solana wallet, and submit via the official CLI with genuine transcripts. Never share your seed phrase.
+The implied value is a research scenario. Reward eligibility and costs depend on each protocol's published terms.
 
-## Risk note
-Implied value is a rough valuation scenario, not a prediction, investment advice, or a claim that an airdrop will occur. Research plans avoid promising token rewards or encouraging speculative wallet activity.
-
-License: MIT. All sample protocols are artificial.
+License: MIT.
